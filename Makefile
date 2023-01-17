@@ -6,36 +6,43 @@
 #    By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 12:20:33 by ageiser           #+#    #+#              #
-#    Updated: 2023/01/12 17:23:19 by ageiser          ###   ########.fr        #
+#    Updated: 2023/01/16 13:38:25 by ageiser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+#nom de sortie
 
 CC = gcc
-#maybe clang
+#gcc = Linux
+#clang = Mac
 
 LIB_DIR = libft/
 LIB = libft.a
+#sous-dossier de la libft
+#fichier de sortie de la libft
+#se sert du makefile libft pour creer libft.a
 
 SRC_DIR = srcs/
 #dossier des sources
 
-SRC_FILES = main.c
-# fichiers c 
+SRC_FILES = main.c sort_function.c push_swap.c
+				
+# fichiers c a compiler
 
 OBJ_DIR = obj/
 #dossier des objects
 
 SUB_DIR = obj/ps_srcs obj/c_srcs
-#sous-dossier des .c et .o
+#sous-dossier des .c et .o a voir comment ca fonctionne
 
 FLAG =  -c -Wall -Wextra -Werror
 # -c = without linking. permet de ne pas lier des fichier entre eux
 
-INCLUDE =   -I include/
-#			-I $(LIB_DIR)
+INCLUDE =   -I include/	\
+				-I $(LIB_DIR)
 # -I quand ca se passe dans un autre dossier que celui ou se trouve le makefile
+
 
 RM = rm -f
 
@@ -54,13 +61,26 @@ obj/%.o	  : srcs/%.c
 # -g = generate debug information
 # $< nom premiere dependance  -o write output to file  $@ nom cible
 
+$(LIB) :
+		@$(MAKE) -C $(LIB_DIR)
+		/bin/mv $(LIB_DIR)$(LIB) .
+# a commenter
+# . sert a dire ou l'on copie ce fichiersoi dans le dossier parent		
 $(NAME) : $(PS_OBJ) $(LIB)
 #a commenter	
-clean : rm -rf $(OBJ_DIR)
 
+
+clean : 
+			for dir in $(MODULES); do\
+				@$(MAKE) clean -C $$dir;\
+			done
+			@/bin/rm -rf $(OBJ_DIR)
+# a commenter
 fclean : clean
-			@$(RM) $(NAME)
-
+		@$(MAKE) fclean -C $(LIB_DIR)
+		@$(RM) $(LIB)
+		@$(RM) $(NAME)
+#a commenter			
 re : fclean all
 
 .PHONY : all clean fclean re
