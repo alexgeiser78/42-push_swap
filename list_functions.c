@@ -6,11 +6,10 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/01/26 16:34:27 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/01/27 15:13:53 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h> //printf
 #include"push_swap.h"
 #include<stdlib.h>//malloc
 #include<unistd.h>//write
@@ -63,7 +62,7 @@ if(is_empty_list(lst))
 	printf("[%d]\n", lst->data); //printf
 	lst = lst->next;
 }
-printf("NULL\n");
+printf("[NULL]\n");
 }
 
 //-------------------------------------------------------
@@ -179,7 +178,7 @@ t_list push_back_list(t_list lst, int data)
 //---------------------------------------------------------------
 
 
-t_list push_front_list(t_list *lst, int data)
+t_list *push_front_list(t_list *lst, int data)
 {
 	t_list *element;
 
@@ -191,7 +190,7 @@ t_list push_front_list(t_list *lst, int data)
 		element->next = NULL;
 	else
 		element->next= lst;
-	return (*lst);
+	return (lst);
 }	
 
 //-----------------------------------------------------------------

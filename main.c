@@ -6,11 +6,10 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/01/26 17:46:48 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/01/27 18:44:56 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>//printf
 #include"push_swap.h"
 #include<stdlib.h>//malloc
 #include<unistd.h>//write
@@ -21,6 +20,8 @@ int main(int argc, char **argv)
 	int j = 1;
 	int num = 0;
 	int paramsum = argc -1;
+	int sizea = 0;
+	int sizeb = 0;
 /*	
 	if(argc < 2)
 	{
@@ -43,9 +44,80 @@ int main(int argc, char **argv)
 	j++;	
 	}
 
+	i = 0; j = 1;
+
+	while(i < paramsum)
+	{
+	num = ft_atoi(argv[j]);
+	listb = add_at(listb, num, i);
+	i++;
+	j++;	
+	}
+	
+
+	printf("\n");//printf
+	printf("///////include numbers/////////\n");
+	
 	print_list(lista);
-	printf("------------------\n");	
+	printf("A\n");//printf
+	printf("------------------\n");	//printf
 	print_list(listb);
+	printf("B\n"); //printf
+	printf("\n");
+
+	printf("////////sa///////////\n");//printf
+	lista = sa(lista);
+
+	print_list(lista);
+	printf("A\n");//printf
+	printf("------------------\n"); //printf	
+	print_list(listb);
+	printf("B\n");
+	printf("\n");
+
+	printf("///////sb////////////\n");//printf
+	listb = sb(listb);
+
+	print_list(lista);
+	printf("A\n");//printf
+	printf("------------------\n"); //printf
+	print_list(listb);
+	printf("B\n");
+	printf("\n");
+
+	printf("///////ss//////////////\n"); //printf
+	ss(lista, listb);
+
+	print_list(lista);
+	printf("A\n");//printf
+	printf("------------------\n"); //printf
+	print_list(listb);
+	printf("B\n");
+	printf("\n");
+
+	sizea = list_size(lista);
+	sizeb = list_size(listb);
+
+	printf("/////////free a///////////\n");
+	lista = new_list();
+	
+	print_list(lista);
+	printf("A\n");//printf
+	printf("------------------\n"); //printf
+	print_list(listb);
+	printf("B\n");
+	printf("\n");
+
+	printf("///////pa///////////////\n");
+	pa(lista, listb);
+
+	print_list(lista);
+	printf("A\n");//printf
+	printf("------------------\n"); //printf
+	print_list(listb);
+	printf("B\n");
+	printf("\n");
+
 
 	free(lista);
 	free(listb);
