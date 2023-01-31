@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/01/27 18:44:56 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/01/31 17:37:08 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	t_list *lista = new_list();
 	t_list *listb = new_list();
 	
-
+/*
 	while(i < paramsum)
 	{
 	num = ft_atoi(argv[j]);
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 	}
 
 	i = 0; j = 1;
-
+*/
 	while(i < paramsum)
 	{
 	num = ft_atoi(argv[j]);
@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n"); //printf
 	printf("\n");
-
+/*
 	printf("////////sa///////////\n");//printf
 	lista = sa(lista);
 
@@ -107,10 +107,26 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
+*/
+	printf("/////// pa 3x ///////////////\n");
+	pa(&lista, &listb);
+	pa(&lista, &listb);
+	pa(&lista, &listb);
+// le & permet de modifier l-espace memoire alloue
+	printf("5\n");
+	print_list(lista);
+	printf("A\n");//printf
+	printf("------------------\n"); //printf
+	print_list(listb);
+	printf("B\n");
+	printf("\n");
 
-	printf("///////pa///////////////\n");
-	pa(lista, listb);
-
+	printf("/////// pb 3x ///////////////\n");
+	pb(&lista, &listb);
+	pb(&lista, &listb);
+	pb(&lista, &listb);
+// le & permet de modifier l-espace memoire alloue
+	printf("5\n");
 	print_list(lista);
 	printf("A\n");//printf
 	printf("------------------\n"); //printf

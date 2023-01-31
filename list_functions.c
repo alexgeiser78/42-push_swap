@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/01/27 15:13:53 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:23:25 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ if(is_empty_list(lst))
 	printf("empty list\n"); //printf
 	return;
 }
-	while(!is_empty_list(lst))
+//	while(!is_empty_list(lst))
+	while(lst)
 {
 	printf("[%d]\n", lst->data); //printf
 	lst = lst->next;

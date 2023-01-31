@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:57:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/01/27 18:09:27 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/01/31 17:39:39 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,73 @@ void *ss(t_list *lista, t_list *listb)
 
 //-----------------------------------------------------------------
 
-void *pa(t_list *lista, t_list *listb)
+void pa(t_list **lista, t_list **listb)
 {
-	int i = list_size(listb);
-	int tmp;
-       	tmp = listb->data;
-	free_at(listb, i);
-	lista = add_at(lista, tmp, i);
-	return(0);
+t_list *tmp;
+
+if (*listb == NULL)
+	return;
+tmp = (*listb)->next;
+	printf("---------------------\n"); 
+	printf("1-> tmp = %p\n", tmp);
+(*listb)->next = *lista;
+/*	printf("---------------\n");
+	printf("2\n");
+	print_list(*lista);
+	printf("A\n");
+	print_list(*listb);
+	printf("B\n");*/
+*lista = *listb;
+/*	printf("-----------------\n");
+	printf("3\n");
+	print_list(*lista);
+	printf("A\n");
+	print_list(*listb);
+	printf("B\n");*/
+*listb = tmp;
+/*	printf("-----------------\n");
+	printf("4\n");
+	print_list(*lista);
+	printf("A\n");
+	print_list(*listb);
+	printf("B\n");*/
+return;
+
+}
+// necessite d'un double pointeur pour pouvoir modifier la memoire
+
+//-------------------------------------------
+
+
+void pb(t_list **lista, t_list **listb)
+{
+t_list *tmp;
+
+if (*lista == NULL)
+	return;
+tmp = (*lista)->next;
+	printf("---------------------\n"); 
+	printf("1-> tmp = %p\n", tmp);
+(*lista)->next = *listb;
+/*	printf("---------------\n");
+	printf("2\n");
+	print_list(*lista);
+	printf("A\n");
+	print_list(*listb);
+	printf("B\n");*/
+*listb = *lista;
+/*	printf("-----------------\n");
+	printf("3\n");
+	print_list(*lista);
+	printf("A\n");
+	print_list(*listb);
+	printf("B\n");*/
+*lista = tmp;
+/*	printf("-----------------\n");
+	printf("4\n");
+	print_list(*lista);
+	printf("A\n");
+	print_list(*listb);
+	printf("B\n");*/
+return;
 }
