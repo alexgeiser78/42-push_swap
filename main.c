@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/01/31 17:37:08 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/01 16:10:51 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ int main(int argc, char **argv)
 		error_checker(argv[1]);
 */
 
+
+//----------create lists	
 	t_list *lista = new_list();
 	t_list *listb = new_list();
 	
-/*
+//----------putnbr A
 	while(i < paramsum)
 	{
 	num = ft_atoi(argv[j]);
@@ -44,8 +46,9 @@ int main(int argc, char **argv)
 	j++;	
 	}
 
+//-----------putnbr B
 	i = 0; j = 1;
-*/
+
 	while(i < paramsum)
 	{
 	num = ft_atoi(argv[j]);
@@ -57,14 +60,14 @@ int main(int argc, char **argv)
 
 	printf("\n");//printf
 	printf("///////include numbers/////////\n");
-	
+
 	print_list(lista);
 	printf("A\n");//printf
 	printf("------------------\n");	//printf
 	print_list(listb);
 	printf("B\n"); //printf
 	printf("\n");
-/*
+
 	printf("////////sa///////////\n");//printf
 	lista = sa(lista);
 
@@ -94,9 +97,9 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-
-	sizea = list_size(lista);
-	sizeb = list_size(listb);
+/*
+//	sizea = list_size(lista);
+//	sizeb = list_size(listb);
 
 	printf("/////////free a///////////\n");
 	lista = new_list();
@@ -108,6 +111,7 @@ int main(int argc, char **argv)
 	printf("B\n");
 	printf("\n");
 */
+/*
 	printf("/////// pa 3x ///////////////\n");
 	pa(&lista, &listb);
 	pa(&lista, &listb);
@@ -133,11 +137,36 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
+*/
+/*	
+	printf("///////////ra & rb///////////\n\n");
+	ra(&lista);
+	rb(&listb);
+
+	printf("///////////rr///////////////\n\n");
+	rr(&lista, &listb);
+*/
+
+	printf("output\n");
+	print_list(lista);
+	printf("A\n");//printf
+	printf("------------------\n"); //printf
+	print_list(listb);
+	printf("B\n");
+	printf("\n");
 
 
-	free(lista);
-	free(listb);
+	
+	
+	
+
+	
+	
+//	free(lista);
+//	free(listb);
 }
+
+//---------------------------------------------------
 
 //list_learning
 /*

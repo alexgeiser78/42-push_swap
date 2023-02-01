@@ -6,12 +6,12 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:57:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/01/31 17:39:39 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/01 16:03:33 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-
+#include<stdlib.h>
 t_list *sa(t_list *lst)
 {
 	int swap;
@@ -137,4 +137,35 @@ tmp = (*lista)->next;
 	print_list(*listb);
 	printf("B\n");*/
 return;
+}
+
+//-----------------------------------------------
+
+void ra(t_list **lst)
+{
+	int swap = (*lst)->data;
+	int last = list_size(*lst);
+
+	add_at(*lst, swap, last);
+	free_at(lst, 0);
+}
+
+//------------------------------------------------
+
+
+void rb(t_list **lst)
+{
+	int swap = (*lst)->data;
+	int last = list_size(*lst);
+
+	add_at(*lst, swap, last);
+	free_at(lst, 0);
+}
+
+//-------------------------------------------------
+
+void rr(t_list **lista, t_list **listb)
+{
+	ra(lista);
+	rb(listb);
 }

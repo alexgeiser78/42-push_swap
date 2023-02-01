@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/01/30 15:23:25 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/01 15:43:16 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list *new_list(void)
 
 //-----------------------------------------------------
 
-Bool is_empty_list(t_list *lst)
+Bool is_empty_list(t_list **lst)
 {
 	if(lst == NULL)
 		return(true);
@@ -37,7 +37,7 @@ int list_size(t_list *lst)
 {
 	int size = 0;
 
-	if(is_empty_list(lst))
+	if(is_empty_list(&lst))
 		return(size);
 
 	while(lst != NULL)
@@ -52,7 +52,7 @@ int list_size(t_list *lst)
 
 void print_list(t_list *lst)
 {
-if(is_empty_list(lst))
+if(is_empty_list(&lst))
 { 
 	printf("empty list\n"); //printf
 	return;
@@ -88,7 +88,7 @@ t_list *add_at(t_list *lst, int data, int pos)
 	t_list *cur = lst;
 	int i = 0;
 	t_list *element = create_element(data);
-	if(is_empty_list(lst))
+	if(is_empty_list(&lst))
 		return(element);
 	if(pos == 0)
 	{
@@ -112,7 +112,7 @@ t_list *add_at(t_list *lst, int data, int pos)
 int get_at(t_list *lst, int pos)
 {
 	int i = 0;
-	if(is_empty_list(lst))
+	if(is_empty_list(&lst))
 	{
 	printf("liste vide\n"); //printf
 	return (-1);
@@ -130,7 +130,7 @@ int get_at(t_list *lst, int pos)
 void set_at(t_list *lst, int data, int pos)
 {
 	int i = 0;
-	if(is_empty_list(lst))
+	if(is_empty_list(&lst))
 	{
 	printf("liste vide\n"); //printf
 	return;
@@ -187,7 +187,7 @@ t_list *push_front_list(t_list *lst, int data)
 
 	element->data = data;
 
-	if(is_empty_list(lst))
+	if(is_empty_list(&lst))
 		element->next = NULL;
 	else
 		element->next= lst;
@@ -252,18 +252,18 @@ t_list pop_front_list(t_list lst)
 
 //-----------------------------------------
 
-t_list *free_at(t_list *lst, int pos)
+t_list *free_at(t_list **lst, int pos)
 {
-	t_list *last = lst;
-	t_list *cur = lst;
+	t_list *last = *lst;
+	t_list *cur = *lst;
 	int i = 0;
 	if(is_empty_list(lst))
 		return(NULL);
 	if(pos == 0)
 	{
-		lst = lst->next;
+		*lst = (*lst)->next;
 		free(cur);
-		return(lst);
+		return(*lst);
 	}
 	while(i < pos)
 	{
@@ -274,7 +274,7 @@ t_list *free_at(t_list *lst, int pos)
 	last->next = cur->next;
 	free(cur);
 
-	return(lst);	
+	return(*lst);	
 }
 
 //-----------------------------------------------

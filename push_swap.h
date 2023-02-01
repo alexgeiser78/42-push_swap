@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/01/31 17:25:02 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/01 15:58:59 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_datos
 }	t_datos;
 */
 t_list *new_list(void);
-Bool is_empty_list(t_list *lst);
+Bool is_empty_list(t_list **lst);
 int list_size(t_list *lst);
 void print_list(t_list *lst);
 t_list *add_at(t_list *lst, int data, int pos);
@@ -42,7 +42,7 @@ t_list *create_element(int data);
 t_list *free_list(t_list *lst);
 int get_at(t_list *lst, int pos); //afficher une donnee d'un element
 void set_at(t_list *lst, int data, int pos);
-t_list *free_at(t_list *lst, int pos);
+t_list *free_at(t_list **lst, int pos);
 char *error_checker(char *str);
 int ft_atoi(char *str);
 
@@ -52,6 +52,11 @@ void *ss(t_list *lista, t_list *listb);
 
 void pa(t_list **lista, t_list **listb);
 void pb(t_list **lista, t_list **listb);
+
+void ra(t_list **lst);
+void rb(t_list **lst);
+void rr(t_list **lista, t_list **listb);
+
 /*
 void ft_lstadd_front(t_list **lst, t_list *new);
 t_list *push_front_list(t_list *lst, int data);
