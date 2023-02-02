@@ -6,13 +6,15 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/01 15:58:59 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/02 18:25:49 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 #include<stdio.h> //printf
+#include<stdlib.h> //malloc
+#include<unistd.h>
 typedef enum
 {
 	false,
@@ -23,7 +25,7 @@ typedef struct s_list
 {
 	int data;
 	struct s_list *next;
-//	struct s_list *last;
+//	struct s_list *prev;
 }t_list;
 /*
 typedef struct s_datos
@@ -56,6 +58,8 @@ void pb(t_list **lista, t_list **listb);
 void ra(t_list **lst);
 void rb(t_list **lst);
 void rr(t_list **lista, t_list **listb);
+
+void rra(t_list **lst);
 
 /*
 void ft_lstadd_front(t_list **lst, t_list *new);

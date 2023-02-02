@@ -6,13 +6,11 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/01 16:10:51 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/02 17:37:19 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-#include<stdlib.h>//malloc
-#include<unistd.h>//write
 		  
 int main(int argc, char **argv)
 {
@@ -22,15 +20,15 @@ int main(int argc, char **argv)
 	int paramsum = argc -1;
 	int sizea = 0;
 	int sizeb = 0;
-/*	
+	
 	if(argc < 2)
 	{
 		write(2, "Error\n", 6);
 		return(0);
 	}
-	else
-		error_checker(argv[1]);
-*/
+//	else
+//		error_checker(argv[1]);
+
 
 
 //----------create lists	
@@ -67,7 +65,7 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n"); //printf
 	printf("\n");
-
+/*
 	printf("////////sa///////////\n");//printf
 	lista = sa(lista);
 
@@ -97,7 +95,7 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-/*
+
 //	sizea = list_size(lista);
 //	sizeb = list_size(listb);
 
@@ -146,6 +144,10 @@ int main(int argc, char **argv)
 	printf("///////////rr///////////////\n\n");
 	rr(&lista, &listb);
 */
+
+	printf("///////////rra/////////////\n\n");
+	rra(&lista);
+
 
 	printf("output\n");
 	print_list(lista);

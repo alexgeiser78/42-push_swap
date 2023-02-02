@@ -6,13 +6,11 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/01 15:43:16 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/02 13:50:11 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-#include<stdlib.h>//malloc
-#include<unistd.h>//write
 
 //-----------------------------------------------------
 
