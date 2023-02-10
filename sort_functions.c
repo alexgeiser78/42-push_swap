@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:57:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/02 18:17:13 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/10 18:45:45 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,25 +174,27 @@ void rr(t_list **lista, t_list **listb)
 
 void rra(t_list **lst)
 {
-	int swap;
-	int size = list_size(*lst);
-	t_list *tmp = *lst;
 
-		printf("size = %d\n", size);
+	t_list *tmp = *lst;
+	t_list *last;
+	t_list *penultieme
+
+//		printf("size = %d\n", size);
 //		printf("data = %d\n", (*lst)->data);
 	
 		while((*lst)->next != NULL) //!= NULL sinon segfault
-		{
-		(lst) =&(*lst)->next;
-//		printf("data = %d\n", (*lst)->data);
-		}
-		swap = (*lst)->data;
-		printf("swap = %d\n", swap);	
+			lst = &(*lst)->next;
+		
+		last = (*lst);
+		
+		print_list(*lst);	
 
 		free_at(lst, 0);
 
-		(*lst) = (tmp);
-		
+//		(lst) = &(tmp);
+//		printf("%d\n", &(lst->data)); 
+
+
 		(*lst) = add_at(*lst, swap, 0);		 
 }
 
