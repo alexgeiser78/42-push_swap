@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/02 18:25:49 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/11 16:38:34 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void rb(t_list **lst);
 void rr(t_list **lista, t_list **listb);
 
 void rra(t_list **lst);
+void rrb(t_list **lst);
+void rrr(t_list **lista, t_list **listb);
+
+t_list *get_last(t_list *lst);
+t_list *get_penultieme(t_list *lst);
+
 
 /*
 void ft_lstadd_front(t_list **lst, t_list *new);

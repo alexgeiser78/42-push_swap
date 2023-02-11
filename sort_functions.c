@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:57:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/10 18:45:45 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/11 16:53:42 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,29 +172,59 @@ void rr(t_list **lista, t_list **listb)
 
 //-------------------------------------------------
 
-void rra(t_list **lst)
+
+t_list *get_last(t_list *lst)
 {
-
-	t_list *tmp = *lst;
-	t_list *last;
-	t_list *penultieme
-
-//		printf("size = %d\n", size);
-//		printf("data = %d\n", (*lst)->data);
-	
-		while((*lst)->next != NULL) //!= NULL sinon segfault
-			lst = &(*lst)->next;
-		
-		last = (*lst);
-		
-		print_list(*lst);	
-
-		free_at(lst, 0);
-
-//		(lst) = &(tmp);
-//		printf("%d\n", &(lst->data)); 
-
-
-		(*lst) = add_at(*lst, swap, 0);		 
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
 
+//--------------------------------------------------
+
+t_list *get_penultieme(t_list *lst)
+{
+	while (lst->next && lst->next->next != NULL)
+		lst = lst->next;
+	return (lst);
+}
+
+//-------------------------------------------------
+
+void rra(t_list **lst)
+{
+	t_list *tmp = *lst;
+	t_list *last;
+	t_list *penultieme;
+
+		last = get_last(*lst);
+		penultieme = get_penultieme(*lst);
+		tmp = *lst;
+		*lst = last;
+		(*lst)->next = tmp;
+		penultieme->next = NULL;		 
+}
+
+//-------------------------------------------------
+
+void rrb(t_list **lst)
+{
+	t_list *tmp = *lst;
+	t_list *last;
+	t_list *penultieme;
+
+		last = get_last(*lst);
+		penultieme = get_penultieme(*lst);
+		tmp = *lst;
+		*lst = last;
+		(*lst)->next = tmp;
+		penultieme->next = NULL;
+}
+
+//-------------------------------------------------
+
+void rrr(t_list **lista, t_list **listb)
+{
+	rra(lista);
+	rrb(listb);
+}

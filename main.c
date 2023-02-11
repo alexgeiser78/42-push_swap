@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/02 17:37:19 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/11 17:10:57 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,10 +144,10 @@ int main(int argc, char **argv)
 	printf("///////////rr///////////////\n\n");
 	rr(&lista, &listb);
 */
-
-	printf("///////////rra/////////////\n\n");
+/*
+	printf("///////////rra & rrb/////////////\n\n");
 	rra(&lista);
-
+	rrb(&listb);
 
 	printf("output\n");
 	print_list(lista);
@@ -156,13 +156,17 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
+*/
+	printf("//////////rrr/////////");
+	rrr(&lista, &listb);	
 
-
-	
-	
-	
-
-	
+	printf("output\n");
+	print_list(lista);
+	printf("A\n");//printf
+	printf("------------------\n"); //printf
+	print_list(listb);
+	printf("B\n");
+	printf("\n");
 	
 //	free(lista);
 //	free(listb);
