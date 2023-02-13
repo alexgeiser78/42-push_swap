@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/11 16:38:34 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:50:20 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,7 @@ typedef struct s_list
 	struct s_list *next;
 //	struct s_list *prev;
 }t_list;
-/*
-typedef struct s_datos
-{
-	int	i;
-	char	moco;
-	int	n;
-}	t_datos;
-*/
+
 t_list *new_list(void);
 Bool is_empty_list(t_list **lst);
 int list_size(t_list *lst);

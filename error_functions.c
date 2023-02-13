@@ -19,4 +19,6 @@ char *error_checker(char *str)
 	return(str);
 }
 
-
+// no repeat
+// not to big 214748
+// just int

@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/02 13:50:11 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:39:41 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ t_list push_back_list(t_list lst, int data)
 }
 */
 //---------------------------------------------------------------
-
+/*
 
 t_list *push_front_list(t_list *lst, int data)
 {
@@ -191,7 +191,7 @@ t_list *push_front_list(t_list *lst, int data)
 		element->next= lst;
 	return (lst);
 }	
-
+*/
 //-----------------------------------------------------------------
 /*
 t_list pop_back_list(t_list lst)

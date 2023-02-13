@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/11 17:10:57 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/13 17:58:58 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-
+*/
+/*
 	printf("///////sb////////////\n");//printf
 	listb = sb(listb);
 
@@ -85,8 +86,8 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-
-	printf("///////ss//////////////\n"); //printf
+*/
+/*	printf("///////ss//////////////\n"); //printf
 	ss(lista, listb);
 
 	print_list(lista);
@@ -109,26 +110,27 @@ int main(int argc, char **argv)
 	printf("B\n");
 	printf("\n");
 */
-/*
+
 	printf("/////// pa 3x ///////////////\n");
 	pa(&lista, &listb);
 	pa(&lista, &listb);
 	pa(&lista, &listb);
 // le & permet de modifier l-espace memoire alloue
-	printf("5\n");
+/*	printf("5\n");
 	print_list(lista);
 	printf("A\n");//printf
 	printf("------------------\n"); //printf
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-
-	printf("/////// pb 3x ///////////////\n");
+*/
+/*	printf("/////// pb 3x ///////////////\n");
 	pb(&lista, &listb);
 	pb(&lista, &listb);
 	pb(&lista, &listb);
+*/
 // le & permet de modifier l-espace memoire alloue
-	printf("5\n");
+/*	printf("5\n");
 	print_list(lista);
 	printf("A\n");//printf
 	printf("------------------\n"); //printf
@@ -157,8 +159,8 @@ int main(int argc, char **argv)
 	printf("B\n");
 	printf("\n");
 */
-	printf("//////////rrr/////////");
-	rrr(&lista, &listb);	
+//	printf("//////////rrr/////////");
+//	rrr(&lista, &listb);	
 
 	printf("output\n");
 	print_list(lista);

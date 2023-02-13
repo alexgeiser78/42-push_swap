@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:57:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/11 16:53:42 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/13 18:17:59 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,29 @@
 t_list *sa(t_list *lst)
 {
 	int swap;
-	t_list *tmp;
-	tmp = lst;
-
-	if(list_size(lst) <= 1)
-	{
-		printf("A: 1 element or less\n"); // printf
+			
+	if(lst == NULL || lst->next ==NULL)
 		return(0);
-	}
-	else
-	{
-		swap = lst->data;
-		lst->data = lst->next->data;
-		lst->next->data = swap;
-		lst= tmp;
-	}
+	swap = lst->data;
+	lst->data = lst->next->data;
+	lst->next->data = swap;
 	return(lst);
 }
+/* on stocke dans swap le data du premier element, le data du permier element prend le data du 
+deuxieme element, le deuxieme element prend le data de swap soit premier element */ 
 
 //-----------------------------------------------------------------
-
 
 t_list *sb(t_list *lst)
 {
 	int swap;
-	t_list *tmp;
-	tmp = lst;
 
-	if(list_size(lst) <= 1)
-	{
-		printf("B: 1 element or less\n"); // printf
+	if(lst == NULL || lst->next ==NULL)
 		return(0);
-	}
-	else
-	{
-		swap = lst->data;
-		lst->data = lst->next->data;
-		lst->next->data = swap;
-		lst= tmp;
-	}
-	return(lst);
+	swap = lst->data;
+	lst->data = lst->next->data;
+	lst->next->data = swap;
+	return(lst);	
 }
 
 //-----------------------------------------------------------------
@@ -75,33 +58,42 @@ t_list *tmp;
 if (*listb == NULL)
 	return;
 tmp = (*listb)->next;
-	printf("---------------------\n"); 
-	printf("1-> tmp = %p\n", tmp);
+/*	printf("---------------------\n"); 
+	printf("pointeur de debut de chaine = %p\n", &listb);
+	printf("1-> tmp = %p\n", tmp);	
+*/
 (*listb)->next = *lista;
-/*	printf("---------------\n");
+/*	printf("-----------------\n");
 	printf("2\n");
 	print_list(*lista);
 	printf("A\n");
 	print_list(*listb);
-	printf("B\n");*/
+	printf("B\n");
+*/
 *lista = *listb;
-/*	printf("-----------------\n");
+/*
+	printf("-----------------\n");
 	printf("3\n");
 	print_list(*lista);
 	printf("A\n");
 	print_list(*listb);
-	printf("B\n");*/
+	printf("B\n");
+*/
 *listb = tmp;
 /*	printf("-----------------\n");
 	printf("4\n");
 	print_list(*lista);
 	printf("A\n");
 	print_list(*listb);
-	printf("B\n");*/
+	printf("B\n");
+*/
 return;
 
 }
-// necessite d'un double pointeur pour pouvoir modifier la memoire
+//on stocke dans tmp le deuxieme element de la liste b, qui a la fin sera le premier
+//le premier element de la liste a pointe sur la liste b
+//on copie la liste b dans la liste a
+//dans la liste b on remet le deuxieme element qui etait en tampon
 
 //-------------------------------------------
 
@@ -112,31 +104,11 @@ t_list *tmp;
 
 if (*lista == NULL)
 	return;
-tmp = (*lista)->next;
-	printf("---------------------\n"); 
-	printf("1-> tmp = %p\n", tmp);
-(*lista)->next = *listb;
-/*	printf("---------------\n");
-	printf("2\n");
-	print_list(*lista);
-	printf("A\n");
-	print_list(*listb);
-	printf("B\n");*/
-*listb = *lista;
-/*	printf("-----------------\n");
-	printf("3\n");
-	print_list(*lista);
-	printf("A\n");
-	print_list(*listb);
-	printf("B\n");*/
-*lista = tmp;
-/*	printf("-----------------\n");
-	printf("4\n");
-	print_list(*lista);
-	printf("A\n");
-	print_list(*listb);
-	printf("B\n");*/
-return;
+	tmp = (*lista)->next;
+	(*lista)->next = *listb;
+	*listb = *lista;
+	*lista = tmp;
+	return;
 }
 
 //-----------------------------------------------
