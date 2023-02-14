@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/13 17:58:58 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:30:51 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n"); //printf
 	printf("\n");
-/*
-	printf("////////sa///////////\n");//printf
+
+//	printf("////////sa///////////\n");//printf
 	lista = sa(lista);
 
 	print_list(lista);
@@ -75,9 +75,9 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-*/
-/*
-	printf("///////sb////////////\n");//printf
+
+
+//	printf("///////sb////////////\n");//printf
 	listb = sb(listb);
 
 	print_list(lista);
@@ -86,8 +86,8 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-*/
-/*	printf("///////ss//////////////\n"); //printf
+
+//	printf("///////ss//////////////\n"); //printf
 	ss(lista, listb);
 
 	print_list(lista);
@@ -100,8 +100,8 @@ int main(int argc, char **argv)
 //	sizea = list_size(lista);
 //	sizeb = list_size(listb);
 
-	printf("/////////free a///////////\n");
-	lista = new_list();
+//	printf("/////////free a///////////\n");
+//	lista = new_list();
 	
 	print_list(lista);
 	printf("A\n");//printf
@@ -109,58 +109,58 @@ int main(int argc, char **argv)
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-*/
 
-	printf("/////// pa 3x ///////////////\n");
+
+//	printf("/////// pa 3x ///////////////\n");
 	pa(&lista, &listb);
-	pa(&lista, &listb);
-	pa(&lista, &listb);
+//	pa(&lista, &listb);
+//	pa(&lista, &listb);
 // le & permet de modifier l-espace memoire alloue
-/*	printf("5\n");
+//	printf("5\n");
 	print_list(lista);
 	printf("A\n");//printf
 	printf("------------------\n"); //printf
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-*/
-/*	printf("/////// pb 3x ///////////////\n");
+
+//	printf("/////// pb 3x ///////////////\n");
 	pb(&lista, &listb);
-	pb(&lista, &listb);
-	pb(&lista, &listb);
-*/
+//	pb(&lista, &listb);
+//	pb(&lista, &listb);
+
 // le & permet de modifier l-espace memoire alloue
-/*	printf("5\n");
+//	printf("5\n");
 	print_list(lista);
 	printf("A\n");//printf
 	printf("------------------\n"); //printf
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-*/
-/*	
-	printf("///////////ra & rb///////////\n\n");
+
+	
+//	printf("///////////ra & rb///////////\n\n");
 	ra(&lista);
 	rb(&listb);
 
-	printf("///////////rr///////////////\n\n");
+//	printf("///////////rr///////////////\n\n");
 	rr(&lista, &listb);
-*/
-/*
-	printf("///////////rra & rrb/////////////\n\n");
+
+
+//	printf("///////////rra & rrb/////////////\n\n");
 	rra(&lista);
 	rrb(&listb);
 
-	printf("output\n");
+//	printf("output\n");
 	print_list(lista);
 	printf("A\n");//printf
 	printf("------------------\n"); //printf
 	print_list(listb);
 	printf("B\n");
 	printf("\n");
-*/
+
 //	printf("//////////rrr/////////");
-//	rrr(&lista, &listb);	
+	rrr(&lista, &listb);	
 
 	printf("output\n");
 	print_list(lista);
