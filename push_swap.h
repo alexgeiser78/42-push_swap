@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/13 14:50:20 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/15 15:50:55 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,14 @@ t_list *free_at(t_list **lst, int pos);
 char *error_checker(char *str);
 int ft_atoi(char *str);
 
-t_list *sa(t_list *lst);
-t_list *sb(t_list *lst);
-void *ss(t_list *lista, t_list *listb);
+void ft_swap(t_list *lst);
 
 void pa(t_list **lista, t_list **listb);
 void pb(t_list **lista, t_list **listb);
 
-void ra(t_list **lst);
-void rb(t_list **lst);
-void rr(t_list **lista, t_list **listb);
+void ft_rot(t_list **lst);
+
+void ft_rev_rot(t_list **lst);
 
 void rra(t_list **lst);
 void rrb(t_list **lst);
@@ -59,6 +57,15 @@ void rrr(t_list **lista, t_list **listb);
 t_list *get_last(t_list *lst);
 t_list *get_penultieme(t_list *lst);
 
+void run_swap_a(t_list **lista);
+void run_swap_b(t_list **listb);
+void run_swap_ab(t_list *lista, t_list *listb);
+void run_rot_a(t_list **lista);
+void run_rot_b(t_list **listb);
+void run_rot_ab(t_list **lista, t_list **listb);
+void run_rev_rot_a(t_list **lista);
+void run_rev_rot_b(t_list **listb);
+void run_rev_rot_ab(t_list **lista, t_list **listb);
 
 /*
 void ft_lstadd_front(t_list **lst, t_list *new);

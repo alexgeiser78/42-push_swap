@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/13 13:39:41 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/15 15:32:52 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,3 +307,20 @@ void ft_lstadd_front(t_list **lst, t_list *new)
 t_list	add_element(t_list *lst, int num)
 {
 */
+
+t_list *get_last(t_list *lst)
+{
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
+}
+// find last element
+//--------------------------------------------------
+
+t_list	*get_penultieme(t_list *lst)
+{
+	while (lst->next && lst->next->next != NULL)
+		lst = lst->next;
+	return (lst);
+}
+//find before-last element

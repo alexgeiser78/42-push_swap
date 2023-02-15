@@ -6,31 +6,13 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:22:37 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/14 18:24:15 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/15 16:02:10 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-t_list *get_last(t_list *lst)
-{
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
-// find last element
-//--------------------------------------------------
-
-t_list	*get_penultieme(t_list *lst)
-{
-	while (lst->next && lst->next->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
-//find before-last element
-//-------------------------------------------------
-
-void	rra(t_list **lst)
+void	ft_rev_rot(t_list **lst)
 {
 	t_list	*tmp;
 	t_list	*last;
@@ -44,7 +26,6 @@ void	rra(t_list **lst)
 		*lst = last;
 		(*lst)->next = tmp;
 		penultieme->next = NULL;
-	write(1, "rra\n", 4);
 }
 //ligne 169 on stocke le dernier element dans last
 //ligne 170 on stocke l'avant dernier element dans penultieme
@@ -59,30 +40,35 @@ void	rra(t_list **lst)
 //     36  ->        36   ->      24   ->    24
 //    null          null         ...        null
 //      A            A           ...          A
+
+//-------------------------------------------------
+/*
+void	rrr(t_list **lista, t_list **listb)
+{
+	rra(lista);
+	rrb(listb);
+	write(1, "rrr\n", 4);
+}
+*/
+void	run_rev_rot_a(t_list **lista)
+{
+	ft_rev_rot(lista);
+	write(1, "rra\n", 4);
+}
+
 //-------------------------------------------------
 
-void	rrb(t_list **lst)
+void	run_rev_rot_b(t_list **listb)
 {
-	t_list	*tmp;
-	t_list	*last;
-	t_list	*penultieme;
-
-	if (*lst == NULL || (*lst)->next == NULL)
-		return ;
-		last = get_last(*lst);
-		penultieme = get_penultieme(*lst);
-		tmp = *lst;
-		*lst = last;
-		(*lst)->next = tmp;
-		penultieme->next = NULL;
+	ft_rev_rot(listb);
 	write(1, "rrb\n", 4);
 }
 
 //-------------------------------------------------
 
-void	rrr(t_list **lista, t_list **listb)
+void	run_rev_rot_ab(t_list **lista, t_list **listb)
 {
-	rra(lista);
-	rrb(listb);
+	ft_rev_rot(lista);
+	ft_rev_rot(listb);
 	write(1, "rrr\n", 4);
 }
