@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:22:37 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/15 16:02:10 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/15 16:12:15 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,7 @@ void	ft_rev_rot(t_list **lst)
 //      A            A           ...          A
 
 //-------------------------------------------------
-/*
-void	rrr(t_list **lista, t_list **listb)
-{
-	rra(lista);
-	rrb(listb);
-	write(1, "rrr\n", 4);
-}
-*/
+
 void	run_rev_rot_a(t_list **lista)
 {
 	ft_rev_rot(lista);

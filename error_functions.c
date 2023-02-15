@@ -1,7 +1,18 @@
-#include<unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_functions.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 16:38:23 by ageiser           #+#    #+#             */
+/*   Updated: 2023/02/15 17:48:37 by ageiser          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"push_swap.h"
 
-char *error_checker(char *str)
+Bool	input_true(char *str)
 {
 	int i = 0;
 	while(str[i])
@@ -16,7 +27,7 @@ char *error_checker(char *str)
 		else
 			i++;
 	}
-	return(str);
+	return(true);
 }
 
 // no repeat

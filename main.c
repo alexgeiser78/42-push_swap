@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/15 16:01:17 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/15 17:50:05 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,19 @@ int main(int argc, char **argv)
 	int j = 1;
 	int num = 0;
 	int paramsum = argc -1;
-	int sizea = 0;
-	int sizeb = 0;
+//	int sizea = 0;
+//	int sizeb = 0;
 	
 	if(argc < 2)
 	{
 		write(2, "Error\n", 6);
 		return(0);
 	}
-//	else
-//		error_checker(argv[1]);
-
+	if(!input_true(argv))
+	{
+		write(2, "Error\n", 6);
+		return(0);
+	}
 
 
 //----------create lists	
@@ -45,7 +47,7 @@ int main(int argc, char **argv)
 	}
 
 //-----------putnbr B
-	i = 0; j = 1;
+/*	i = 0; j = 1;
 
 	while(i < paramsum)
 	{
@@ -54,7 +56,7 @@ int main(int argc, char **argv)
 	i++;
 	j++;	
 	}
-	
+*/	
 
 	printf("\n");//printf
 	printf("///////include numbers/////////\n");
@@ -66,101 +68,21 @@ int main(int argc, char **argv)
 	printf("B\n"); //printf
 	printf("\n");
 
-//	printf("////////sa///////////\n");//printf
-//		run_swap_a(&lista);
-/*
-	print_list(lista);
-	printf("A\n");//printf
-	printf("------------------\n"); //printf	
-	print_list(listb);
-	printf("B\n");
-	printf("\n");
-*/
 
-//	printf("///////sb////////////\n");//printf
-//		run_swap_b(&listb);
-/*
-	print_list(lista);
-	printf("A\n");//printf
-	printf("------------------\n"); //printf
-	print_list(listb);
-	printf("B\n");
-	printf("\n");
-*/
-//	printf("///////ss//////////////\n"); //printf
+//	run_swap_a(&lista);
+//	run_swap_b(&listb);
 //	run_swap_ab(lista, listb);
-/*
-	print_list(lista);
-	printf("A\n");//printf
-	printf("------------------\n"); //printf
-	print_list(listb);
-	printf("B\n");
-	printf("\n");
-*/
-//	sizea = list_size(lista);
-//	sizeb = list_size(listb);
 
-//	printf("/////////free a///////////\n");
-//	lista = new_list();
-/*	
-	print_list(lista);
-	printf("A\n");//printf
-	printf("------------------\n"); //printf
-	print_list(listb);
-	printf("B\n");
-	printf("\n");
-*/
-
-//	printf("/////// pa 3x ///////////////\n");
 //	pa(&lista, &listb);
-//	pa(&lista, &listb);
-//	pa(&lista, &listb);
-// le & permet de modifier l-espace memoire alloue
-//	printf("5\n");
-/*	print_list(lista);
-	printf("A\n");//printf
-	printf("------------------\n"); //printf
-	print_list(listb);
-	printf("B\n");
-	printf("\n");
-*/
-//	printf("/////// pb 3x ///////////////\n");
-//	pb(&lista, &listb);
-//	pb(&lista, &listb);
 //	pb(&lista, &listb);
 
-// le & permet de modifier l-espace memoire alloue
-//	printf("5\n");
-/*	print_list(lista);
-	printf("A\n");//printf
-	printf("------------------\n"); //printf
-	print_list(listb);
-	printf("B\n");
-	printf("\n");
-
-*/	
-//	printf("///////////ra & rb///////////\n\n");
 //	run_rot_a(&lista);
 //	run_rot_b(&listb);
-
-//	printf("///////////rr///////////////\n\n");
 //	run_rot_ab(&lista, &listb);
 
-
-//	printf("///////////rra & rrb/////////////\n\n");
 //	run_rev_rot_a(&lista);
 //	run_rev_rot_b(&listb);
-
-//	printf("output\n");
-/*	print_list(lista);
-	printf("A\n");//printf
-	printf("------------------\n"); //printf
-	print_list(listb);
-	printf("B\n");
-	printf("\n");
-*/
-//	printf("//////////rrr/////////");
-	run_rev_rot_ab(&lista, &listb);	
+//	run_rev_rot_ab(&lista, &listb);	
 
 	printf("output\n");
 	print_list(lista);
@@ -199,4 +121,6 @@ int main(int argc, char **argv)
 	free_at(lista, 1);
 	print_list(lista);
 	free_list(lista);
+	sizea = list_size(lista);
+	sizeb = list_size(listb);
 */
