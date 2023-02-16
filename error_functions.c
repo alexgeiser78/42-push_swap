@@ -6,26 +6,32 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:38:23 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/15 17:48:37 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/16 18:48:38 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-Bool	input_true(char *str)
+Bool	is_number(char *str)
+{
+	int i = 0;
+/*	while(str[i] && is_digit(str[i]))
+		i++;
+	if (str[i] != '\0' && !is_digit(str[i]))
+		return(false);*/
+	return(true);
+}
+
+Bool	input_check(char **str)
 {
 	int i = 0;
 	while(str[i])
 	{
-		while(str[i] == ' ' || str[i] == '\t')
-			i++;
-		if(str[i] > '9' && (str[i] != '-' && str[i] != '+'))
+		if (!is_number(str[i]))
 		{
-			write(2, "Error\n", 6);
-			return(0);
-		}	
-		else
-			i++;
+			printf("isnum = %u\n", is_number(str[i]));
+			return(false);
+		}
 	}
 	return(true);
 }

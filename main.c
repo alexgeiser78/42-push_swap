@@ -6,32 +6,32 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/15 17:50:05 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/16 18:15:37 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-		  
+
 int main(int argc, char **argv)
 {
-	int i = 0;
-	int j = 1;
-	int num = 0;
-	int paramsum = argc -1;
+	int	i = 0;
+	int	j = 1;
+	int	num = 0;
+	int	paramsum = argc -1;
 //	int sizea = 0;
 //	int sizeb = 0;
 	
 	if(argc < 2)
 	{
-		write(2, "Error\n", 6);
+		write(2, "Error0arg\n", 10);
 		return(0);
 	}
-	if(!input_true(argv))
+		if(!input_check(argv))
 	{
-		write(2, "Error\n", 6);
-		return(0);
+		write(2, "Errorinput\n",11);
+	//	return(0);
 	}
-
+	printf("input = %u\n", input_check(argv));
 
 //----------create lists	
 	t_list *lista = new_list();

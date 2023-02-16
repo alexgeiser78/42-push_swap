@@ -19,3 +19,11 @@ int ft_atoi(char *str)
 	}
 return(res * sign);
 }
+
+Bool	is_digit(char c)
+{
+	if(c >= '0' && c <= '9')
+		return(true);
+	else
+		return(false);
+}
