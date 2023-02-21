@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/16 18:15:37 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/21 13:44:04 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int main(int argc, char **argv)
 	
 	if(argc < 2)
 	{
-		write(2, "Error0arg\n", 10);
+		write(2, "Error0arg\n", 10);//
 		return(0);
 	}
-		if(!input_check(argv))
+		if(input_check(argv) == false)
 	{
 		write(2, "Errorinput\n",11);
-	//	return(0);
+//		return(0);
 	}
 	printf("input = %u\n", input_check(argv));
 
