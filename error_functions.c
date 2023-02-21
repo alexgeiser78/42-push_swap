@@ -6,26 +6,27 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:38:23 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/21 15:20:09 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/21 15:29:37 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
 
-int	is_digit(char c)
+Bool	is_digit(char c)
 {
 	if(c >= '0' && c <= '9')
-		return(1);
+		return(true);
 	else
-		return(0);
+		return(false);
 }
+//verifie que chaque caractere est un nombre
 
 Bool	is_number(char *str)
 {
 	int i = 0;
 
-	if (str[i] != '\0' && !is_digit(str[i]))
+	if (str[i] != '\0' && is_digit(str[i]) == false)
 		return(false);
 	return(true);
 }

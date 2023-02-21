@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/21 15:20:19 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/21 15:29:46 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_list	*free_at(t_list **lst, int pos);
 Bool	input_check(char **str);
 int	ft_atoi(char *str);
 Bool 	is_number(char *str);
-int	is_digit(char c);
+Bool	is_digit(char c);
 
 
 void	ft_swap(t_list *lst);
