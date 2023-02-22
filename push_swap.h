@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/21 18:22:11 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:35:33 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ Bool	input_check(char **str);
 Bool 	is_number(char *str);
 Bool	is_digit(char c);
 Bool	is_sign(char c);
+Bool	is_duplicate(char **str);
+int	nbr_cmp(char *str1, char *str2);
 
 void	ft_swap(t_list *lst);
 
