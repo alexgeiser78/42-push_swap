@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/22 18:35:33 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/23 16:38:42 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include<stdio.h>
 # include<stdlib.h>
 # include<unistd.h>
+# include<limits.h> 
 
 typedef enum
 {
@@ -40,13 +41,19 @@ void	set_at(t_list *lst, int data, int pos);
 t_list	*free_at(t_list **lst, int pos);
 
 int	ft_atoi(char *str);
+char	*ft_itoa(int n);
+size_t	ft_strlen(const char *str);
+int 	nbrlen(long int n);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
 
 Bool	input_check(char **str);
 Bool 	is_number(char *str);
 Bool	is_digit(char c);
 Bool	is_sign(char c);
 Bool	is_duplicate(char **str);
-int	nbr_cmp(char *str1, char *str2);
+Bool	nbr_cmp(char *str1, char *str2);
+Bool	just_one_zero(char *str);
 
 void	ft_swap(t_list *lst);
 
