@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+         #
+#    By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/12 12:20:33 by ageiser           #+#    #+#              #
-#    Updated: 2023/01/16 13:38:25 by ageiser          ###   ########.fr        #
+#    Created: 2023/02/25 18:43:17 by ageiser           #+#    #+#              #
+#    Updated: 2023/02/25 18:56:26 by ageiser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ $(LIB) :
 		@$(MAKE) -C $(LIB_DIR)
 		/bin/mv $(LIB_DIR)$(LIB) .
 # a commenter
-# . sert a dire ou l'on copie ce fichiersoi dans le dossier parent		
+# . sert a dire ou l'on copie ce fichier soit dans le dossier parent		
+
 $(NAME) : $(PS_OBJ) $(LIB)
 #a commenter	
 

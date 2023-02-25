@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/25 16:39:15 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/25 18:21:45 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 		write(2, "Error0arg\n", 10);//
 		return(0);
 	}
-		if(input_check(argv) == false || overflow_checker(argv) == false)
+	if(input_check(argv) == false || overflow_checker(argv) == false)
 	{
 		write(2, "Errorinput\n",11);//
 		return(0);
