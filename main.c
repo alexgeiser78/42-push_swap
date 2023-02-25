@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/23 17:10:45 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/25 16:39:15 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,19 @@ int main(int argc, char **argv)
 	int	j = 1;
 	int	num = 0;
 	int	paramsum = argc -1;
-//	int sizea = 0;
-//	int sizeb = 0;
 	
 	if(argc < 2)
 	{
 		write(2, "Error0arg\n", 10);//
 		return(0);
 	}
-		if(input_check(argv) == false)
+		if(input_check(argv) == false || overflow_checker(argv) == false)
 	{
-		write(2, "Errorinput\n",11);
-//		return(0);
+		write(2, "Errorinput\n",11);//
+		return(0);
 	}
-	printf("input = %u\n", input_check(argv));
+
+	printf("input = %u\n", input_check(argv)); //
 
 //----------create lists	
 	t_list *lista = new_list();

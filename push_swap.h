@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/23 16:38:42 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/02/25 16:19:36 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ Bool	is_sign(char c);
 Bool	is_duplicate(char **str);
 Bool	nbr_cmp(char *str1, char *str2);
 Bool	just_one_zero(char *str);
+Bool	overflow_checker(char **str);
 
 void	ft_swap(t_list *lst);
 
