@@ -6,7 +6,7 @@
 #    By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 18:43:17 by ageiser           #+#    #+#              #
-#    Updated: 2023/02/26 18:21:18 by ageiser          ###   ########.fr        #
+#    Updated: 2023/02/27 18:37:35 by ageiser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,11 +69,6 @@ BWHITE:=\033[107m"
 
 #---------------------------------------------------------------------
 
-NAME = push_swap
-#output name
-
-#----------------------------------------------------------------------
-
 CC = gcc
 #compiler
 #gcc = Linux
@@ -81,13 +76,26 @@ CC = gcc
 
 #----------------------------------------------------------------------
 
-CFLAGS =  -c -Wall -Wextra -Werror
-# -c = without linking. Don't link files together
+CFLAGS = -Wall -Wextra -Werror 
+# -Wall   = -Wadress -Wcomment -Wformat -Wbool-compare -Wuninitialized
+#           -Wunknown-pragmas -Wunused-value...		
+# -Wextra = -Wsign-compare -Wtype-limits -pedantic...
+# -Werror = transform warning into error
+
+#----------------------------------------------------------------------
+
+NAME = push_swap
+#output name
 
 #----------------------------------------------------------------------
 
 SRC_DIR = src/
 #sources directory
+
+#----------------------------------------------------------------------
+
+OBJ_DIR = obj/
+#objects directory
 
 #----------------------------------------------------------------------
 
@@ -98,109 +106,107 @@ SRC_FILES = error_functions.c error_functions_suite.c \
 
 #----------------------------------------------------------------------
 
-OBJ_DIR = obj/
-#objects directory
+TMP_SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
+#add a prefix to the file, in this case: src/  ,   main.c               
 
 #----------------------------------------------------------------------
 
 OBJ = $(SRC_FILES:.c=.o)
-#                                                                       to check and comment
+#what obj is
 
 #----------------------------------------------------------------------
 
-SUB_DIR = obj/ps_srcs obj/c_srcs
-#sub-directories                                                        to check
+TMP_OBJ = $(addprefix $(OBJ_DIR), $(OBJ))
+#add a prefix to the file, in this case: obj/  ,  main.o                
+
+#-----------------------------------------------------------------------
+
+INCLUDE =   -I ./include/	
+#library inclusion							
+# -I add .h file
 
 #----------------------------------------------------------------------
 
-LIB_DIR = libft/
+LIB_DIR = ./libft/
 LIB = libft.a
-#subdirectories for libraries                                            to check and add printf
+#subdirectories for libraries                                            add printf
 #output of the librairies
 #use the Makefile of the librairy to create the output
 
 #----------------------------------------------------------------------
 
-INCLUDE =   -I ./include/	\
-#				-I $(LIB_DIR)
-#library inclusion							  to check
-# -I add .h file
+RM = rm -rf
+#remove directory
 
 #----------------------------------------------------------------------
 
-RM = rm -f
-#remove file
-
-#----------------------------------------------------------------------
-
-PS_SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
-#add a prefix to the file, in this case: src/  ,   main.c                to check
-
-#----------------------------------------------------------------------
-
-PS_OBJ = $(addprefix $(OBJ_DIR), $(OBJ))
-#add a prefix to the file, in this case: obj/  ,  main.o                  to check
+all: makelib $(OBJ_DIR)  $(NAME)
+#make rule, can be compaired to the main and follows all rules one by one
 
 #-----------------------------------------------------------------------
 
-all : $(NAME)
-#make rule, can be compaired to the main and follows all rules on by one   add $(OBJ_DIR)?
+makelib: 
+	make -C $(LIB_DIR)
+#compile the external librairy libft but don't generate libft.a
 
 #-----------------------------------------------------------------------
-$(OBJ_DIR)%.o	  : $(SRC_DIR)%.c
-			@mkdir -p $(OBJ_DIR) $(SUB_DIR)                    
-			$(CC) -g $(CFLAGS) $(INCLUDE) $< -o $@
+
+$(OBJ_DIR)%.o	  : $(SRC_DIR)%.c                    
+			$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 #pattern rules
 #to build .o files we use the .c files
-#@mkdir = sub directories creation 
-#-p = intermediate directories creation. Without this option the directory
-#must allready exist and. If it's not the case there won't be an error      to check all and subdir
-#message. Repertories are created with 777 rights
-# -g = generate debug information
-# $< first dependencies(*.c)  -o write output to file  $@ target (*.o)
+# -c = without linking. Don't link files together
+# in case of bonuses it's important to put $(INCLUDE) beside $(SRC_DIR)%.c
 
 #-----------------------------------------------------------------------
 
-$(LIB) :
-		@$(MAKE) -C $(LIB_DIR)
-		/bin/mv $(LIB_DIR)$(LIB) .
+$(OBJ_DIR): 
+	mkdir  $(OBJ_DIR)
+#@mkdir = create the obj file if it not exist 
+#-p = intermediate directories creation. Without this option the directory
+#must allready exist. If it's not the case there won't be an error      to check all and subdir
+#message. Repertories are created with 777 rights useful only if 
+#subdirectory is used
+
+#-----------------------------------------------------------------------
+
+#$(LIB) :
+#		@$(MAKE) -C $(LIB_DIR)
+#		/bin/mv $(LIB_DIR)$(LIB) .
 # . sert a dire ou l'on copie ce fichier soit dans le dossier parent		to check and comment
 # 										is it necessary?
 
 #-----------------------------------------------------------------------
-$(NAME) : $(PS_OBJ)
-	$(CC) $(CFLAGS) $(PS_OBJ) -o $(NAME)
+$(NAME) : $(TMP_OBJ) ./libft/libft.a
+	$(CC) $(CFLAGS) $(TMP_OBJ) -L ./libft/ -lft -o $(NAME)
 #                                                                               to check and comment
 #                                                                               add $(LIB) after the
-#                                                                               first $(PS_OBJ)?
+#                                                                               first $(TMP_OBJ)?
 
 #-----------------------------------------------------------------------
 
 clean : 
-			for dir in $(SUB_DIR); do\
-				@$(MAKE) clean -C $$dir;\
-			done
-			@/bin/rm -rf $(OBJ_DIR)
+			$(RM) $(OBJ_DIR)
+			$(MAKE) clean -C $(LIB_DIR)
 # remove targets
-# for the directory in SUB_DIR -> we execute the command make clean 		to check and add (RM)
-# 										-C ???
+# delete the obj directory	 									
 
 #-----------------------------------------------------------------------
 
 fclean : clean
-#		@$(MAKE) fclean -C $(LIB_DIR)
-#		@$(RM) $(LIB)
-		@$(RM) $(NAME)
+		$(RM) $(LIB)
+		$(RM) $(NAME)
 #									to check and comment
 
 #-----------------------------------------------------------------------
 
 re : fclean all
-#excute fclean and all so it destroys all previous and rebuild
+#execute fclean and all, so it destroys all previous and rebuild new
 
 #-----------------------------------------------------------------------
 
 .PHONY : all clean fclean re
-#for non-files targets, so doesn't look if it is up to date
+#for non-files targets, so doesn't look if it is up-to-date
 
 #-----------------------------------------------------------------------
+
