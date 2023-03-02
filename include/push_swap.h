@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/25 16:19:36 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/02 18:43:41 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,11 @@ t_list	*free_at(t_list **lst, int pos);
 int	ft_atoi(char *str);
 char	*ft_itoa(int n);
 size_t	ft_strlen(const char *str);
-int 	nbrlen(long int n);
+int	nbrlen(long int n);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
-
 Bool	input_check(char **str);
-Bool 	is_number(char *str);
+Bool	is_number(char *str);
 Bool	is_digit(char c);
 Bool	is_sign(char c);
 Bool	is_duplicate(char **str);
@@ -77,6 +76,10 @@ void	run_rot_ab(t_list **lista, t_list **listb);
 void	run_rev_rot_a(t_list **lista);
 void	run_rev_rot_b(t_list **listb);
 void	run_rev_rot_ab(t_list **lista, t_list **listb);
+
+Bool	is_sorted(t_list *lst);
+void	how_to_sort(t_list **lista,/* t_list **listb,*/ int paramsum);
+void	sort_3(t_list **lista);
 
 /*
 void ft_lstadd_front(t_list **lst, t_list *new);
