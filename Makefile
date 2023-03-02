@@ -6,58 +6,59 @@
 #    By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 18:43:17 by ageiser           #+#    #+#              #
-#    Updated: 2023/02/27 18:37:35 by ageiser          ###   ########.fr        #
+#    Updated: 2023/03/02 13:44:25 by ageiser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #color
-BLACK:=\033[1;30m"
-RED:="\033[1;31m"
-GREEN:=\033[1;32m"
-YELLOW:=\033[1;33m"
-BLUE:=\033[1;34m"
-MAGENTA:=\033[1;35m"
-CYAN:=\033\036[1;36m"
-LIGHTGRAY:=\033[1;37m"
-DARKGRAY:=\033[1;90m"
-LIGHTRED:=\033[1;91m"
-LIGHTGREEN:=\033[1;92m"
-LIGHTYELLOW:=\033[1;93m"
-LIGHTBLUE:=\033[1;94m"
-LIGHTMAGENTA:=033[1;95m"
-LIGHTCYAN:=033[1;96m"
-WHITE:=033[1;97m"
+BLACK=\033[1;30m
+RED =\033[1;31m
+GREEN=\033[1;32m
+YELLOW=\033[1;33m
+BLUE:=033[1;34m
+MAGENTA=\033[1;35m
+CYAN=\033\036[1;36m
+LIGHTGRAY=\033[1;37m
+DARKGRAY=\033[1;90m
+LIGHTRED=\033[1;91m
+LIGHTGREEN=\033[1;92m
+LIGHTYELLOW=\033[1;93m
+LIGHTBLUE=\033[1;94m
+LIGHTMAGENTA=033[1;95m
+LIGHTCYAN=\033[1;96m
+WHITE=\033[1;97m
+NO_COLOR=\033[0m
 
-#\033 = esacpe character
-#"\[0m" removes atrributes (format and color)
+#\033 = escape character
+#\033[0m removes atrributes (format and color)
 #see all at https://misc.flogisoft.com/bash/tip_colors_and_formatting
 
 #set
-BOLD:=\033[1m"
-DIM:=\033[2m"
-UNDERLINED:=\033[4m"
-BLINK:=\033[5m"
-REVERSE:=\033[7m"
-HIDDEN:=\033[8m"
+BOLD=\033[1m
+DIM=\033[2m
+UNDERLINED=\033[4m
+BLINK=\033[5m
+REVERSE=\033[7m
+HIDDEN=\033[8m
 
 #background
-BBLACK:=\033[40m"
-BRED:=\033[41m"
-BGREEN:=\033[42m"
-BYELLOW:=\033[43m"
-BBLUE:=\033[44m"
-BMAGENTA:=\033[45m"
-BCYAN:=\033[46m"
-BLIGHTGRAY:=\033[47m"
-BDEFAULTBLACK:=\033[49m"
-BDARKGRAY:=\033[100m"
-BLIGHTRED:=\033[101m"
-BLIGHTGREEN:=\033[102m"
-BLIGHTYELLOW:=\033[103m"
-BLIGHTBLUE:=\033[104m"
-BLIGHTMAGENTA:=\033[105m"
-BLIGHTCYAN:=\033[106m"
-BWHITE:=\033[107m"
+BBLACK=\033[40m
+BRED=\033[41m
+BGREEN=\033[42m
+BYELLOW=\033[43m
+BBLUE=\033[44m
+BMAGENTA=\033[45m
+BCYAN=\033[46m
+BLIGHTGRAY=\033[47m
+BDEFAULTBLACK=\033[49m
+BDARKGRAY=\033[100m
+BLIGHTRED=\033[101m
+BLIGHTGREEN=\033[102m
+BLIGHTYELLOW=\033[103m
+BLIGHTBLUE=\033[104m
+BLIGHTMAGENTA=\033[105m
+BLIGHTCYAN=\033[106m
+BWHITE=\033[107m
 
 #----------------------------------------------------------------------
 
@@ -128,20 +129,21 @@ INCLUDE =   -I ./include/
 #----------------------------------------------------------------------
 
 LIB_DIR = ./libft/
-LIB = libft.a
-#subdirectories for libraries                                            add printf
+LIB = ./libft/libft.a
+#subdirectories for libraries
 #output of the librairies
 #use the Makefile of the librairy to create the output
 
 #----------------------------------------------------------------------
 
 RM = rm -rf
-#remove directory
+#remove directory or file
 
 #----------------------------------------------------------------------
 
-all: makelib $(OBJ_DIR)  $(NAME)
-#make rule, can be compaired to the main and follows all rules one by one
+all: makelib $(OBJ_DIR) $(NAME)
+#make rule, can be compaired to the main and follows all rules one by onei
+#
 
 #-----------------------------------------------------------------------
 
@@ -151,8 +153,9 @@ makelib:
 
 #-----------------------------------------------------------------------
 
-$(OBJ_DIR)%.o	  : $(SRC_DIR)%.c                    
+$(OBJ_DIR)%.o	  : $(SRC_DIR)%.c  	
 			$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+			@echo "$(GREEN)file compiled$(NO_COLOR)"
 #pattern rules
 #to build .o files we use the .c files
 # -c = without linking. Don't link files together
@@ -164,43 +167,49 @@ $(OBJ_DIR):
 	mkdir  $(OBJ_DIR)
 #@mkdir = create the obj file if it not exist 
 #-p = intermediate directories creation. Without this option the directory
-#must allready exist. If it's not the case there won't be an error      to check all and subdir
-#message. Repertories are created with 777 rights useful only if 
+#must allready exist. If it's not the case there won't be an error 
+#message. Repertories are created with 777 rights. Useful only if 
 #subdirectory is used
 
 #-----------------------------------------------------------------------
 
-#$(LIB) :
-#		@$(MAKE) -C $(LIB_DIR)
-#		/bin/mv $(LIB_DIR)$(LIB) .
-# . sert a dire ou l'on copie ce fichier soit dans le dossier parent		to check and comment
-# 										is it necessary?
-
-#-----------------------------------------------------------------------
-$(NAME) : $(TMP_OBJ) ./libft/libft.a
+$(NAME) : $(TMP_OBJ) $(LIB)
 	$(CC) $(CFLAGS) $(TMP_OBJ) -L ./libft/ -lft -o $(NAME)
-#                                                                               to check and comment
-#                                                                               add $(LIB) after the
-#                                                                               first $(TMP_OBJ)?
+	@echo "$(GREEN)librairy compiled and executable generated$(NO_COLOR)"
+#
+#library compilation function
+#push_swap = obj/main.o ./libft/libft.a
+#gcc -Wall -Wextra -Werror obj/main.o 
+#-L = librairy search. In the directory ./libft/ 
+#-l = search for library named ft. lib and .a are forgotten
+#-o = output name                                                               
 
 #-----------------------------------------------------------------------
 
 clean : 
 			$(RM) $(OBJ_DIR)
 			$(MAKE) clean -C $(LIB_DIR)
+			@echo "$(RED)objects (*.o) removed$(NO_COLOR)"
 # remove targets
-# delete the obj directory	 									
+# delete the obj directory	
+# delete the obj directory of the librairy also
+# red color 									
 
 #-----------------------------------------------------------------------
 
 fclean : clean
+		
 		$(RM) $(LIB)
 		$(RM) $(NAME)
-#									to check and comment
+		@echo "$(RED)library (*.a) and executable removed $(NO_COLOR)"
+#removes the library (*.a)
+#removes the output file push_swap
+#red color
 
 #-----------------------------------------------------------------------
 
 re : fclean all
+	@echo "$(YELLOW)make fclean  make all $(NO_COLOR)"
 #execute fclean and all, so it destroys all previous and rebuild new
 
 #-----------------------------------------------------------------------
