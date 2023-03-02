@@ -6,13 +6,13 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/25 18:21:45 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/02 18:31:06 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int	i = 0;
 	int	j = 1;
@@ -26,11 +26,11 @@ int main(int argc, char **argv)
 	}
 	if(input_check(argv) == false || overflow_checker(argv) == false)
 	{
-		write(2, "Errorinput\n",11);//
+		write(2, "Errorinput\n", 11);//
 		return(0);
 	}
-
 	printf("input = %u\n", input_check(argv)); //
+
 
 //----------create lists	
 	t_list *lista = new_list();
@@ -45,20 +45,9 @@ int main(int argc, char **argv)
 	j++;	
 	}
 
-//-----------putnbr B
-/*	i = 0; j = 1;
-
-	while(i < paramsum)
-	{
-	num = ft_atoi(argv[j]);
-	listb = add_at(listb, num, i);
-	i++;
-	j++;	
-	}
-*/	
-
+//input
 	printf("\n");//printf
-	printf("///////include numbers/////////\n");
+	printf("input\n");
 
 	print_list(lista);
 	printf("A\n");//printf
@@ -67,6 +56,7 @@ int main(int argc, char **argv)
 	printf("B\n"); //printf
 	printf("\n");
 
+	how_to_sort(&lista,/* &listb,*/ paramsum);
 
 //	run_swap_a(&lista);
 //	run_swap_b(&listb);
@@ -83,6 +73,7 @@ int main(int argc, char **argv)
 //	run_rev_rot_b(&listb);
 //	run_rev_rot_ab(&lista, &listb);	
 
+//output
 	printf("output\n");
 	print_list(lista);
 	printf("A\n");//printf

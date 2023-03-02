@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/15 15:32:52 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/02 18:54:38 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,86 +14,90 @@
 
 //-----------------------------------------------------
 
-t_list *new_list(void)
+t_list	*new_list(void)
 {
-	return(NULL);
+	return (NULL);
 }
 
 //-----------------------------------------------------
 
-Bool is_empty_list(t_list **lst)
+Bool	is_empty_list(t_list **lst)
 {
-	if(lst == NULL)
-		return(true);
-	return(false);
+	if (lst == NULL)
+		return (true);
+	return (false);
 }
 
 //------------------------------------------------------
 
-int list_size(t_list *lst)
+int	list_size(t_list *lst)
 
 {
-	int size = 0;
+	int	size;
 
-	if(is_empty_list(&lst))
-		return(size);
-
-	while(lst != NULL)
+	size = 0;
+	if (is_empty_list(&lst))
+		return (size);
+	while (lst != NULL)
 	{
 		size++;
 		lst = lst->next;
 	}
-	return(size);
+	return (size);
 }
 
 //-------------------------------------------------------
 
-void print_list(t_list *lst)
+void	print_list(t_list *lst)
 {
-if(is_empty_list(&lst))
-{ 
-	printf("empty list\n"); //printf
-	return;
-}
-//	while(!is_empty_list(lst))
-	while(lst)
-{
-	printf("[%d]\n", lst->data); //printf
-	lst = lst->next;
-}
-printf("[NULL]\n");
+	if (is_empty_list(&lst))
+	{
+		printf ("empty list\n"); //printf
+		return ;
+	}
+	while (lst)
+	{
+		printf ("[%d]\n", lst->data); //printf
+		lst = lst->next;
+	}
+	printf ("[NULL]\n");//printf
 }
 
 //-------------------------------------------------------
 
-//static?
-t_list *create_element(int data)
+t_list	*create_element(int data)
 {
-	t_list *element = malloc(sizeof(t_list));
-	if(!element)
-		return(NULL);
+	t_list	*element;
+
+	element = malloc(sizeof(t_list));
+	if (!element)
+		return (NULL);
 	element->data = data;
 	element->next = NULL;
-
-	return(element);
+	return (element);
 }
 
 //-------------------------------------------------------
 
-t_list *add_at(t_list *lst, int data, int pos)
+t_list	*add_at(t_list *lst, int data, int pos)
 {
-	t_list *last = lst;
-	t_list *cur = lst;
-	int i = 0;
-	t_list *element = create_element(data);
-	if(is_empty_list(&lst))
-		return(element);
-	if(pos == 0)
+	int	i;
+	t_list	*last;
+	t_list	*cur;
+	t_list	*element;
+
+	i = 0;
+	last = lst;
+	cur = lst;
+	element = create_element(data);
+	if (is_empty_list(&lst))
+		return (element);
+	if (pos == 0)
 	{
 		element->next = lst;
-		return(element);
+		return (element);
 	}
-	while(i < pos)
+	while (i < pos)
 	{
 	i++;
 	last = cur;
@@ -101,39 +105,42 @@ t_list *add_at(t_list *lst, int data, int pos)
 	}
 	last->next = element;
 	element->next = cur;
-
-	return(lst);	
+	return (lst);
 }
 
 //-------------------------------------------------------
 
-int get_at(t_list *lst, int pos)
+int	get_at(t_list *lst, int pos)
 {
-	int i = 0;
-	if(is_empty_list(&lst))
+	int	i;
+
+	i = 0;
+	if (is_empty_list(&lst))
 	{
-	printf("liste vide\n"); //printf
-	return (-1);
+		printf ("liste vide\n"); //printf
+		return (-1);
 	}
-	while(i < pos)
+	while (i < pos)
 	{
 		i++;
 		lst = lst->next;
 	}
-	return(lst->data);
+	return (lst->data);
 }
 
 //-----------------------------------------------
 
-void set_at(t_list *lst, int data, int pos)
+void	set_at(t_list *lst, int data, int pos)
 {
-	int i = 0;
-	if(is_empty_list(&lst))
+	int	i;
+
+	i = 0;
+	if (is_empty_list(&lst))
 	{
-	printf("liste vide\n"); //printf
-	return;
+		printf ("liste vide\n"); //printf
+		return ;
 	}
-	while(i < pos)
+	while (i < pos)
 	{
 		i++;
 		lst = lst->next;
@@ -224,16 +231,16 @@ t_list pop_back_list(t_list lst)
 
 //---------------------------------------------------------
 
-t_list pop_front_list(t_list lst)
+t_list	pop_front_list(t_list lst)
 {
-	if(is_empty_list(lst))
+	if (is_empty_list(lst))
 		return(lst);
 	
 	t_list *element;
 
 	element = malloc(sizeof(*element));
 
-	if(element == NULL)
+	if (element == NULL)
 	{
 		printf("malloc error\n");
 		exit(EXIT_FAILURE);
@@ -244,26 +251,30 @@ t_list pop_front_list(t_list lst)
 	free(lst);
 	lst = NULL;
 		
-	return(element);
+	return (element);
 }
 */
 
 //-----------------------------------------
 
-t_list *free_at(t_list **lst, int pos)
+t_list	*free_at(t_list **lst, int pos)
 {
-	t_list *last = *lst;
-	t_list *cur = *lst;
-	int i = 0;
-	if(is_empty_list(lst))
-		return(NULL);
-	if(pos == 0)
+	int	i;
+	t_list	*last;
+	t_list	*cur;
+
+	last = *lst;
+	cur = *lst;
+	i = 0;
+	if (is_empty_list(lst))
+		return (NULL);
+	if (pos == 0)
 	{
 		*lst = (*lst)->next;
 		free(cur);
-		return(*lst);
+		return (*lst);
 	}
-	while(i < pos)
+	while (i < pos)
 	{
 	i++;
 	last = cur;
@@ -271,32 +282,33 @@ t_list *free_at(t_list **lst, int pos)
 	}
 	last->next = cur->next;
 	free(cur);
-
-	return(*lst);	
+	return (*lst);
 }
 
 //-----------------------------------------------
 
-t_list *free_list(t_list *lst)
+t_list	*free_list(t_list *lst)
 {
-	t_list *tmp = NULL;
-	while(lst)
+	t_list	*tmp;
+
+	tmp = NULL;
+	while (lst)
 	{
 	tmp = lst->next;
-	printf("del [%d]\n", lst->data); //printf
-	free(lst);
+		printf("del [%d]\n", lst->data); //printf
+		free (lst);
 	lst = tmp;
 	}
-return(lst);
+	return (lst);
 }
 /*
 //-----------------------------------------------
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if(lst)
+	if (lst)
 	{
-		if(*lst)
+		if (*lst)
 			new->next = *lst;
 		*lst = new;
 	}
@@ -308,7 +320,7 @@ t_list	add_element(t_list *lst, int num)
 {
 */
 
-t_list *get_last(t_list *lst)
+t_list	*get_last(t_list *lst)
 {
 	while (lst->next != NULL)
 		lst = lst->next;
@@ -324,3 +336,34 @@ t_list	*get_penultieme(t_list *lst)
 	return (lst);
 }
 //find before-last element
+//--------------------------------------------------
+
+Bool	is_sorted(t_list *lst)
+{
+	while (lst->next)
+	{
+		if(lst->data > lst->next->data)
+			return(false);
+		lst = lst->next;
+	}
+	return(true);
+}
+//verify if the argument is already ordered
+//--------------------------------------------------
+
+void	sort_3(t_list **lista)
+{
+/*	if(is_sorted(*lista)
+		return ;*/
+
+}
+
+void	how_to_sort(t_list **lista,/* t_list **listb,*/ int paramsum)
+{
+	if(paramsum == 2 && is_sorted(*lista) == false)
+		run_swap_a(lista);
+	if(paramsum == 3 && is_sorted(*lista) == false)
+		sort_3(lista);
+}
+
+
