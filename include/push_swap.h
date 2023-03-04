@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/02 18:43:41 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/04 18:09:35 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	run_rev_rot_ab(t_list **lista, t_list **listb);
 Bool	is_sorted(t_list *lst);
 void	how_to_sort(t_list **lista,/* t_list **listb,*/ int paramsum);
 void	sort_3(t_list **lista);
+int	is_bigger(t_list *lista);
 
 /*
 void ft_lstadd_front(t_list **lst, t_list *new);
