@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/02 18:54:38 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/04 19:18:51 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,12 +351,53 @@ Bool	is_sorted(t_list *lst)
 //verify if the argument is already ordered
 //--------------------------------------------------
 
+int	is_bigger(t_list *lista)
+{
+	int big;
+
+	big  = lista->data;
+	while (lista)
+	{
+		if (lista->data > big)
+			big = lista->data;
+		lista = lista->next;
+	}
+	return(big);
+}
+//search for the biggest number to reduce the number of steps
+//--------------------------------------------------
+
 void	sort_3(t_list **lista)
 {
-/*	if(is_sorted(*lista)
-		return ;*/
+	int	biggest;
 
+	biggest = is_bigger(*lista);
+	if ((*lista)->data == biggest)
+		run_rot_a(lista);
+	else if ((*lista)->next->data == biggest)
+		run_rev_rot_a(lista);
+	if ((*lista)->data > (*lista)->next->data)
+		run_swap_a(lista);
 }
+
+//function to sort 3 numbers using the less steps possible
+//--------------------------------------------------
+
+void	sort_all(t_list **lista, t_list **listb)
+{
+	int medium;
+	medium = search_middle(*lista);
+	while(*lista)
+	{
+		if (lista->data > medium)
+			pb(*lista, *listb);
+		else 
+			run_rot_a(*lista);
+	}
+}
+
+
+
 
 void	how_to_sort(t_list **lista,/* t_list **listb,*/ int paramsum)
 {
@@ -364,6 +405,9 @@ void	how_to_sort(t_list **lista,/* t_list **listb,*/ int paramsum)
 		run_swap_a(lista);
 	if(paramsum == 3 && is_sorted(*lista) == false)
 		sort_3(lista);
+	if(paramsum > 3 && is_sorted(*lista) == false)
+		sort_all(lista, listb);
 }
 
-
+//function to sort 2, 3 and more numbers
+//--------------------------------------------------
