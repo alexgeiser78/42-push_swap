@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/04 19:18:51 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/05 18:06:28 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -383,31 +383,61 @@ void	sort_3(t_list **lista)
 //function to sort 3 numbers using the less steps possible
 //--------------------------------------------------
 
+int	search_middle(t_list **lst)
+{
+	int mini;
+	int maxi;
+	int med;
+	t_list *tmp;
+
+	tmp = (*lst);
+	mini = (*lst)->data;
+	while((*lst)->next)
+	{
+		if ((*lst)->next->data < mini)
+		       mini = (*lst)->next->data;
+		(*lst) = (*lst)->next;
+ 	}
+	printf("mini = %d\n", mini);//
+	(lst) = &tmp;
+	maxi = (*lst)->data;
+	while((*lst)->next)
+	{
+		if ((*lst)->next->data > maxi)
+			maxi = (*lst)->next->data;
+		(*lst)= (*lst)->next;
+	}
+	printf("maxi = %d\n", maxi);//
+	med = (maxi + mini) / 2;
+	printf("med = %d\n", med);//
+	return(med);
+}
+
 void	sort_all(t_list **lista, t_list **listb)
 {
 	int medium;
-	medium = search_middle(*lista);
-	while(*lista)
+	printf("search_middle\n"); //printf
+	medium = search_middle(lista);
+	printf("coucou\n"); //printf
+	printf("first elem. = %d\n", (*lista)->data);//
+	while((*lista)->next)
 	{
-		if (lista->data > medium)
-			pb(*lista, *listb);
+		if ((*lista)->data > medium)
+			pb(lista, listb);
 		else 
-			run_rot_a(*lista);
+			run_rot_a(listb);
+	(*lista) = (*lista)->next;
 	}
 }
 
-
-
-
-void	how_to_sort(t_list **lista,/* t_list **listb,*/ int paramsum)
+void	how_to_sort(t_list **lista, t_list **listb, int paramsum)
 {
 	if(paramsum == 2 && is_sorted(*lista) == false)
 		run_swap_a(lista);
-	if(paramsum == 3 && is_sorted(*lista) == false)
+	else if(paramsum == 3 && is_sorted(*lista) == false)
 		sort_3(lista);
-	if(paramsum > 3 && is_sorted(*lista) == false)
+	else if(paramsum > 3 && is_sorted(*lista) == false)
 		sort_all(lista, listb);
 }
-
 //function to sort 2, 3 and more numbers
 //--------------------------------------------------

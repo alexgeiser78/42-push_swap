@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/02 18:31:06 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/05 18:08:21 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 	printf("B\n"); //printf
 	printf("\n");
 
-	how_to_sort(&lista,/* &listb,*/ paramsum);
+	how_to_sort(&lista, &listb, paramsum);
 
 //	run_swap_a(&lista);
 //	run_swap_b(&listb);
