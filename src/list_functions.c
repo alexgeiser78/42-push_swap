@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/05 18:06:28 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/06 17:51:30 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -399,8 +399,9 @@ int	search_middle(t_list **lst)
 		(*lst) = (*lst)->next;
  	}
 	printf("mini = %d\n", mini);//
-	(lst) = &tmp;
+	*lst = tmp;
 	maxi = (*lst)->data;
+
 	while((*lst)->next)
 	{
 		if ((*lst)->next->data > maxi)
@@ -410,6 +411,8 @@ int	search_middle(t_list **lst)
 	printf("maxi = %d\n", maxi);//
 	med = (maxi + mini) / 2;
 	printf("med = %d\n", med);//
+	*lst = tmp;
+
 	return(med);
 }
 
@@ -418,19 +421,26 @@ void	sort_all(t_list **lista, t_list **listb)
 	int medium;
 	printf("search_middle\n"); //printf
 	medium = search_middle(lista);
-	printf("coucou\n"); //printf
-	printf("first elem. = %d\n", (*lista)->data);//
-	while((*lista)->next)
+
+	
+	while(*lista)
 	{
-		if ((*lista)->data > medium)
+	printf("first elem. = %d\n", (*lista)->data);//
+	if ((*lista)->data > medium)
 			pb(lista, listb);
-		else 
-			run_rot_a(listb);
+	else
+		run_rot_a(lista);
+	
 	(*lista) = (*lista)->next;
+		
+	print_list(*lista);
+	printf("A\n");
+	print_list(*listb);
+	printf("B\n\n");
 	}
 }
 
-void	how_to_sort(t_list **lista, t_list **listb, int paramsum)
+void	how_to_sort(t_list **lista, t_list **listb)
 {
 	if(paramsum == 2 && is_sorted(*lista) == false)
 		run_swap_a(lista);
@@ -441,3 +451,31 @@ void	how_to_sort(t_list **lista, t_list **listb, int paramsum)
 }
 //function to sort 2, 3 and more numbers
 //--------------------------------------------------
+
+void	put_index(t_list *lista, int paramsum)
+{
+	t_list *ptr;
+	t_list *highest;
+	int data;
+	while (--paramsum > 0)
+	{
+		ptr = lista;
+		data = INT_MIN;
+	       highest = NULL;
+       	while (ptr)
+	{
+	if(ptr->data == INT_MIN && ptr->index == 0)
+		ptr->index = 1;
+	if(ptr->data > value && ptr->index == 0)
+	{
+		data = ptr->data;
+		highest = ptr;
+		ptr = lista;
+	}
+	else
+		ptr = ptr->next;
+	}
+	if (highest != NULL)
+	highest->index = paramsum;
+	}
+}	
