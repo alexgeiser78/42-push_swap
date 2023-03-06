@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/04 18:09:35 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/06 17:44:01 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef enum
 typedef struct s_list
 {
 	int	data;
+	int	index;
 	struct s_list	*next;
 }t_list;
 
@@ -78,9 +79,12 @@ void	run_rev_rot_b(t_list **listb);
 void	run_rev_rot_ab(t_list **lista, t_list **listb);
 
 Bool	is_sorted(t_list *lst);
-void	how_to_sort(t_list **lista,/* t_list **listb,*/ int paramsum);
+void	how_to_sort(t_list **lista, t_list **listb, int paramsum);
 void	sort_3(t_list **lista);
 int	is_bigger(t_list *lista);
+int	search_middle(t_list **lst);
+void	sort_all(t_list **lista, t_list **listb);
+void	put_index(t_list *lista, int paramsum);  
 
 /*
 void ft_lstadd_front(t_list **lst, t_list *new);
