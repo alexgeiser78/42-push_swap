@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/06 17:51:30 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/08 17:40:16 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	list_size(t_list *lst)
 	int	size;
 
 	size = 0;
-	if (is_empty_list(&lst))
+	if (is_empty_list(&lst) == true)
 		return (size);
 	while (lst != NULL)
 	{
@@ -367,6 +367,23 @@ int	is_bigger(t_list *lista)
 //search for the biggest number to reduce the number of steps
 //--------------------------------------------------
 
+int	arg_counter(t_list *lst)
+{
+	int size;
+
+	size = 0;
+	if (!lst)
+		return(0);
+	while (lst)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return(size);
+}
+//argument counter
+//-------------------------------------------------------------------
+
 void	sort_3(t_list **lista)
 {
 	int	biggest;
@@ -398,7 +415,6 @@ int	search_middle(t_list **lst)
 		       mini = (*lst)->next->data;
 		(*lst) = (*lst)->next;
  	}
-	printf("mini = %d\n", mini);//
 	*lst = tmp;
 	maxi = (*lst)->data;
 
@@ -408,39 +424,113 @@ int	search_middle(t_list **lst)
 			maxi = (*lst)->next->data;
 		(*lst)= (*lst)->next;
 	}
-	printf("maxi = %d\n", maxi);//
 	med = (maxi + mini) / 2;
-	printf("med = %d\n", med);//
+	printf("med = %d\n\n", med);//
 	*lst = tmp;
 
 	return(med);
 }
+//----------------------------------------------------------------------
+int	search_high(t_list **lst, int block)
+{
+	t_list *tmp;
+	int max;
+	tmp = (*lst);
+	max = (*lst)->data;
+	
+	printf("init data = %d\n", (*lst)->data);
+	printf("int block = %d\n", (*lst)->block);
+	
+	while((*lst)->block == block)
+	{
+		printf("data %d\n",(*lst)->data);
+		printf("block %d\n", (*lst)->block);
+		
+		if((*lst)->next->data >= max)
+		{
+			max = (*lst)->next->data;
+			printf("bigger\n");
+		}
+		(*lst) = (*lst)->next;
+	       	printf("no bigger\n");	
+	}
+	printf("max = %d\n", max);
+	*lst = tmp;
+	return(max);
+}	
 
+
+
+
+//--------------------------------------------------------------------
 void	sort_all(t_list **lista, t_list **listb)
 {
 	int medium;
-	printf("search_middle\n"); //printf
-	medium = search_middle(lista);
-
-	
-	while(*lista)
+	int i;
+	int stack_size_a;
+	int stack_size_b;
+	int chunk;
+	int high;
+	chunk = 0;
+	stack_size_a = list_size(*lista);
+	while(stack_size_a > 2)
 	{
-	printf("first elem. = %d\n", (*lista)->data);//
-	if ((*lista)->data > medium)
-			pb(lista, listb);
-	else
-		run_rot_a(lista);
+		printf("paramsum = %d\n", stack_size_a);	
+		i = 0;
+		printf("search_middle\n"); //printf
+		medium = search_middle(lista);
+		while(i < stack_size_a)
+		{
+		if ((*lista)->data < medium)
+			{
+				(*lista)->block = chunk;
+				printf("top elem. data = %d\n", (*lista)->data);//
+				printf("top elem. index = %d\n", (*lista)->index);//
+				printf("top elem. block = %d\n", (*lista)->block);//
+				pb(lista, listb);
+			}
+		else
+			run_rot_a(lista);
+		i++;
+		}
+	printf("\n");//
+	chunk++;
+	printf("chunk = %d\n", chunk); //
+	stack_size_a = list_size(*lista);
+	}	
+	chunk--;
+	print_list(*lista); //
+	printf("A\n"); //
+	print_list(*listb); //
+	printf("B\n\n"); //
+	if(is_sorted(*lista) == false)
+		run_swap_a(lista);
 	
-	(*lista) = (*lista)->next;
-		
-	print_list(*lista);
-	printf("A\n");
-	print_list(*listb);
-	printf("B\n\n");
+	stack_size_b = list_size(*listb);
+	printf("paramsum b = %d\n", stack_size_b); //
+
+	t_list *tmp;
+	tmp = (*listb);
+
+	while(stack_size_b > 0)
+	{	
+		while((*listb)->block == chunk)
+		{ 
+			high = search_high(listb, chunk);
+			if((*listb)->data == high)
+				pa(lista, listb);
+			else
+				run_rot_b(listb);
+		(*listb) = (*listb)->next;
+		}
+//	*listb = tmp;	
+	stack_size_b--;
 	}
 }
 
-void	how_to_sort(t_list **lista, t_list **listb)
+//------------------------------------------------------------------
+
+void	how_to_sort(t_list **lista, t_list **listb, int paramsum)
 {
 	if(paramsum == 2 && is_sorted(*lista) == false)
 		run_swap_a(lista);
@@ -466,7 +556,7 @@ void	put_index(t_list *lista, int paramsum)
 	{
 	if(ptr->data == INT_MIN && ptr->index == 0)
 		ptr->index = 1;
-	if(ptr->data > value && ptr->index == 0)
+	if(ptr->data > data && ptr->index == 0)
 	{
 		data = ptr->data;
 		highest = ptr;
