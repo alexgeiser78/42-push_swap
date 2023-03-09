@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/08 17:40:16 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/09 17:09:51 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -438,21 +438,25 @@ int	search_high(t_list **lst, int block)
 	tmp = (*lst);
 	max = (*lst)->data;
 	
-	printf("init data = %d\n", (*lst)->data);
-	printf("int block = %d\n", (*lst)->block);
+	printf("init search_hign data = %d\n", (*lst)->data);
+	printf("init search_high block= %d\n", (*lst)->block);
 	
 	while((*lst)->block == block)
 	{
 		printf("data %d\n",(*lst)->data);
 		printf("block %d\n", (*lst)->block);
+		printf("chunk = %d\n", block);
 		
-		if((*lst)->next->data >= max)
+		if((*lst)->data >= max)
 		{
-			max = (*lst)->next->data;
+			max = (*lst)->data;
 			printf("bigger\n");
 		}
-		(*lst) = (*lst)->next;
-	       	printf("no bigger\n");	
+		if((*lst)->next != NULL)
+			(*lst) = (*lst)->next;
+	 //      	printf("no bigger\n");	
+		else
+			break;//
 	}
 	printf("max = %d\n", max);
 	*lst = tmp;
@@ -495,17 +499,24 @@ void	sort_all(t_list **lista, t_list **listb)
 		}
 	printf("\n");//
 	chunk++;
-	printf("chunk = %d\n", chunk); //
+	printf("chunking done\n"); //
 	stack_size_a = list_size(*lista);
 	}	
 	chunk--;
+	printf("max chunk = %d\n", chunk); 
 	print_list(*lista); //
 	printf("A\n"); //
 	print_list(*listb); //
 	printf("B\n\n"); //
+	
 	if(is_sorted(*lista) == false)
 		run_swap_a(lista);
 	
+	print_list(*lista); //
+	printf("A\n"); //
+	print_list(*listb); //
+	printf("B\n\n"); //
+
 	stack_size_b = list_size(*listb);
 	printf("paramsum b = %d\n", stack_size_b); //
 
@@ -514,17 +525,26 @@ void	sort_all(t_list **lista, t_list **listb)
 
 	while(stack_size_b > 0)
 	{	
+		printf("in sort_all top elem. data = %d\n", (*listb)->data);//
+		printf("in sort_all top elem. index = %d\n", (*listb)->index);//
+		printf("in sort_all top elem. block = %d\n", (*listb)->block);// 
 		while((*listb)->block == chunk)
 		{ 
 			high = search_high(listb, chunk);
-			if((*listb)->data == high)
+			if((*listb)->data == high &&(*listb)->block == chunk)
+			{
 				pa(lista, listb);
-			else
+	//			stack_size_b = list_size(*listb);
+
+			}
+			else if((*listb)->data != high &&(*listb)->block == chunk)
+			{
 				run_rot_b(listb);
-		(*listb) = (*listb)->next;
-		}
-//	*listb = tmp;	
-	stack_size_b--;
+			}
+		chunk--;
+		stack_size_b = list_size(*listb);
+		printf("size b = %d\n", stack_size_b); 
+		}	
 	}
 }
 
