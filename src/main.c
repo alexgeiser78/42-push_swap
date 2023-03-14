@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/07 17:59:31 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:55:19 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 int	main(int argc, char **argv)
 {
-	int	i = 0;
+/*	int	i = 0;
 	int	j = 1;
-	int	num = 0;
+	int	num = 0;*/
 	int	paramsum;
 	t_list *lista;
 	t_list *listb;
 	
 	if(argc < 2)
-	{
-		write(2, "Error0arg\n", 10);//
-		return(0);
-	}
+		return(0);//write error?
 	if(input_check(argv) == false || overflow_checker(argv) == false)
-	{
-		write(2, "Errorinput\n", 11);//
-		return(0);
-	}
-	printf("input = %u\n", input_check(argv)); //
+		exit_error(lista, listb); // (NULL, NULL)?
 	paramsum = argc -1; //list_size(lista);
 	printf("paramsum = %d\n", paramsum);
 

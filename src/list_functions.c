@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/09 17:09:51 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/14 13:27:04 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -474,7 +474,7 @@ void	sort_all(t_list **lista, t_list **listb)
 	int stack_size_a;
 	int stack_size_b;
 	int chunk;
-	int high;
+//	int high;
 	chunk = 0;
 	stack_size_a = list_size(*lista);
 	while(stack_size_a > 2)
@@ -523,9 +523,21 @@ void	sort_all(t_list **lista, t_list **listb)
 	t_list *tmp;
 	tmp = (*listb);
 
-	while(stack_size_b > 0)
+	while(*listb)
 	{	
-		printf("in sort_all top elem. data = %d\n", (*listb)->data);//
+		get_target_position(lista, listb);
+		get_cost(lista, listb);
+		do_cheapest_move(lista, listb);
+	}
+	if(is_sorted(*lista) == false)
+		shift_stack(lista);
+}
+		
+		
+		
+		
+		
+		/*		printf("in sort_all top elem. data = %d\n", (*listb)->data);//
 		printf("in sort_all top elem. index = %d\n", (*listb)->index);//
 		printf("in sort_all top elem. block = %d\n", (*listb)->block);// 
 		while((*listb)->block == chunk)
@@ -534,7 +546,8 @@ void	sort_all(t_list **lista, t_list **listb)
 			if((*listb)->data == high &&(*listb)->block == chunk)
 			{
 				pa(lista, listb);
-	//			stack_size_b = list_size(*listb);
+	//			stack
+	//			_size_b = list_size(*listb);
 
 			}
 			else if((*listb)->data != high &&(*listb)->block == chunk)
@@ -547,7 +560,7 @@ void	sort_all(t_list **lista, t_list **listb)
 		}	
 	}
 }
-
+*/
 //------------------------------------------------------------------
 
 void	how_to_sort(t_list **lista, t_list **listb, int paramsum)

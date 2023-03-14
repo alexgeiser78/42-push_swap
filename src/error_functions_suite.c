@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:32:02 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/25 18:16:09 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:47:41 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,3 +99,20 @@ Bool	is_duplicate(char **str)
 //ligne 85 et 88, indices a 1 car on ne veut pas l'argument ./a.out
 //ligne 91 tant qu'on est sur deux arguments differents (j != i) et
 //que ces deux arguments sont les memes -> true
+
+void	exit_error(t_list **lista, t_list **listb)
+{
+	if (lista == NULL || *listb != NULL)
+		free_list(*lista);
+	if (listb == NULL || *listb != NULL)
+		free_list(*listb);
+	write(2, "Error\n", 6);
+	exit (1);
+}
+//fonction de free des malloc et sortie = pour cause d'erreur
+//ligne 105 si l'element de la liste a est null et la liste a n'est pas vide, on 
+//free la liste a
+//ligne 107 pareil pour la liste b
+//ligne 109 2 parce que c'est la sortie d'erreur
+//ligne 110 exit est un fonction qui fait une routine de nettoyage des E/S utilises
+//lors de l'execution du programme
