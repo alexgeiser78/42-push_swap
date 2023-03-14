@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/07 16:30:28 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:51:46 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ typedef struct s_list
 	int	data;
 	int	index;
 	int	block;
+	int	pos;
+	int	cost_a;
+	int	cost_b;
+	int	target_pos;
 	struct s_list	*next;
 }t_list;
 
@@ -87,6 +91,21 @@ int	search_middle(t_list **lst);
 void	sort_all(t_list **lista, t_list **listb);
 void	put_index(t_list *lista, int paramsum);
 int	search_high(t_list **lst, int block);
+
+void	get_target_position(t_list **lista, t_list **listb);
+void	get_position(t_list **lst);
+int	get_target(t_list **lista, int listb_index, int target_index, int target_position);
+void	get_cost(t_list **lista, t_list **listb);
+int	get_lowest_index_position(t_list **lst);
+void	do_cheapest_move(t_list **lista, t_list **listb);
+void	do_move(t_list **lista, t_list **listb, int cost_a, int cost_b);
+void	do_rev_rotate_both(t_list **lista, t_list **listb, int *cost_a, int *cost_b);
+void	do_rotate_both(t_list **lista, t_list **listb, int *cost_a, int *cost_b);
+void	do_rotate_a(t_list **lista, int *cost);
+void	do_rotate_b(t_list **listb, int *cost);
+int	nb_abs(int nb);
+void	shift_stack(t_list **lista);
+void	exit_error(t_list **lista, t_list **listb);
 /*
 void ft_lstadd_front(t_list **lst, t_list *new);
 t_list *push_front_list(t_list *lst, int data);
