@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/15 17:12:31 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/15 18:26:26 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -415,17 +415,15 @@ int	search_middle(t_list **lst)
 	i = 1;
 	med = 0;
 	tmp = (*lst);
-	add = 0;
+	add = (*lst)->data;
 	while((*lst)->next)
 	{	
-		printf("data = %d\n", (*lst)->data);
+		(*lst) = (*lst)->next;
+
 		add = add + (*lst)->data;
 		i++;
-		(*lst) = (*lst)->next;
  	}
 	*lst = tmp;
-	printf("add = %d\n", add);
-	printf("i   = %d\n", i);
 	med = add / i;
 	printf("med = %d\n", med);
 	return(med);
@@ -496,8 +494,9 @@ void	sort_all(t_list **lista, t_list **listb)
 		i++;
 		}
 	printf("\n");//
+
+	printf("chunking %d done\n", chunk_is); //
 	chunk_is++;
-	printf("chunking done\n"); //
 	i = 0;
 	stack_size_a = list_size(*lista);
 	print_list(*lista); //
@@ -508,31 +507,37 @@ void	sort_all(t_list **lista, t_list **listb)
 	}
 	while(stack_size_a != 0)
 	{
+		(*lista)->chunk = chunk_is;
 		pb(lista, listb);
 		stack_size_a = list_size(*lista);
 	}
-	
 	print_list(*lista); //
 	printf("A\n"); //
 	print_list(*listb); //
 	printf("B\n\n"); //
+/*	
+	while(*listb)
+	{
+		printf("chunk = %d\n", (*listb)->chunk);
+		(*listb) = (*listb)->next;
+	}
+*/	
 
-	chunk_is--;
-	printf("max chunk = %d\n", chunk_is);
+/*	while(chunk_is != 0);		 
+	{
+		sort_chunked(listb, chunk); 
+		chunk--;
+	}*/
 }	
+
+
+
+
+
+
+
+
 /*
-	print_list(*lista); //
-	printf("A\n"); //
-	print_list(*listb); //
-	printf("B\n\n"); //
-	
-	if(is_sorted(*lista) == false)
-		run_swap_a(lista);
-	
-	print_list(*lista); //
-	printf("A\n"); //
-	print_list(*listb); //
-	printf("B\n\n"); //
 
 	stack_size_b = list_size(*listb);
 	printf("paramsum b = %d\n", stack_size_b); //
@@ -548,34 +553,6 @@ void	sort_all(t_list **lista, t_list **listb)
 	}
 	if(is_sorted(*lista) == false)
 		shift_stack(lista);
-}
-*/		
-		
-		
-		
-		
-		/*		printf("in sort_all top elem. data = %d\n", (*listb)->data);//
-		printf("in sort_all top elem. index = %d\n", (*listb)->index);//
-		printf("in sort_all top elem. block = %d\n", (*listb)->block);// 
-		while((*listb)->block == chunk)
-		{ 
-			high = search_high(listb, chunk);
-			if((*listb)->data == high &&(*listb)->block == chunk)
-			{
-				pa(lista, listb);
-	//			stack
-	//			_size_b = list_size(*listb);
-
-			}
-			else if((*listb)->data != high &&(*listb)->block == chunk)
-			{
-				run_rot_b(listb);
-			}
-		chunk--;
-		stack_size_b = list_size(*listb);
-		printf("size b = %d\n", stack_size_b); 
-		}	
-	}
 }
 */
 //------------------------------------------------------------------

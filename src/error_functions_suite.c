@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:32:02 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/14 15:47:41 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/15 14:01:59 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ void	exit_error(t_list **lista, t_list **listb)
 	exit (1);
 }
 //fonction de free des malloc et sortie = pour cause d'erreur
-//ligne 105 si l'element de la liste a est null et la liste a n'est pas vide, on 
-//free la liste a
+//ligne 105 si l'element de la liste a est null et la liste a n'est pas vide, 
+//on free la liste a
 //ligne 107 pareil pour la liste b
 //ligne 109 2 parce que c'est la sortie d'erreur
-//ligne 110 exit est un fonction qui fait une routine de nettoyage des E/S utilises
-//lors de l'execution du programme
+//ligne 110 exit est un fonction qui fait une routine de nettoyage des 
+//E/S utilises lors de l'execution du programme

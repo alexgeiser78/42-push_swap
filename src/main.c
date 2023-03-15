@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/14 15:55:19 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/15 18:24:32 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,71 +14,48 @@
 
 int	main(int argc, char **argv)
 {
-/*	int	i = 0;
-	int	j = 1;
-	int	num = 0;*/
-	int	paramsum;
+	int	stack_size;
 	t_list *lista;
 	t_list *listb;
 	
 	if(argc < 2)
-		return(0);//write error?
+		return(0);
 	if(input_check(argv) == false || overflow_checker(argv) == false)
-		exit_error(lista, listb); // (NULL, NULL)?
-	paramsum = argc -1; //list_size(lista);
-	printf("paramsum = %d\n", paramsum);
-
+		exit_error(NULL, NULL); // (NULL, NULL) permet d'etre sure que les malloc seront free
 
 //----------create lists	
-	lista = new_list();
-	listb = new_list();
+	listb = new_empty_list();
+	lista = list_maker(argc, argv);
 
-	//----------putnbr A
-	while(i < paramsum)
-	{
-	num = ft_atoi(argv[j]);
-	lista = add_at(lista, num, i);
-	i++;
-	j++;	
-	}
-
-//input
+//----------input
 	printf("\n");//printf
-	printf("input\n");
+	printf("input\n");//printf
 
-	print_list(lista);
+	print_list(lista);//printf
 	printf("A\n");//printf
 	printf("------------------\n");	//printf
-	print_list(listb);
+	print_list(listb);//printf
 	printf("B\n"); //printf
-	printf("\n");
+	printf("\n");//printf
 
-	put_index(lista, paramsum); //(+1)?
-	how_to_sort(&lista, &listb, paramsum);
+//---------list_size
+	stack_size = list_size(lista);
+	printf("stack_size = %d\n", stack_size); //printf
 
-//	run_swap_a(&lista);
-//	run_swap_b(&listb);
-//	run_swap_ab(lista, listb);
+//--------list_index	
+	put_index(lista, stack_size); //(+1)
 
-//	pa(&lista, &listb);
-//	pb(&lista, &listb);
-
-//	run_rot_a(&lista);
-//	run_rot_b(&listb);
-//	run_rot_ab(&lista, &listb);
-
-//	run_rev_rot_a(&lista);
-//	run_rev_rot_b(&listb);
-//	run_rev_rot_ab(&lista, &listb);	
+//--------sort
+	how_to_sort(&lista, &listb, stack_size);
 
 //output
-	printf("output\n");
-	print_list(lista);
+	printf("output\n");//printf
+	print_list(lista);//printf
 	printf("A\n");//printf
 	printf("------------------\n"); //printf
-	print_list(listb);
-	printf("B\n");
-	printf("\n");
+	print_list(listb);//printf
+	printf("B\n");//printf
+	printf("\n");//printf
 	
 //	free(lista);
 //	free(listb);
@@ -111,4 +88,27 @@ int	main(int argc, char **argv)
 	free_list(lista);
 	sizea = list_size(lista);
 	sizeb = list_size(listb);
+
+//	run_swap_a(&lista);
+//	run_swap_b(&listb);
+//	run_swap_ab(lista, listb);
+
+//	pa(&lista, &listb);
+//	pb(&lista, &listb);
+
+//	run_rot_a(&lista);
+//	run_rot_b(&listb);
+//	run_rot_ab(&lista, &listb);
+
+//	run_rev_rot_a(&lista);
+//	run_rev_rot_b(&listb);
+//	run_rev_rot_ab(&lista, &listb);	
+
+
+
+
+
+
+
+
 */
