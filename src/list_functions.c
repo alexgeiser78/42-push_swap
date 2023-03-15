@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/14 13:27:04 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/15 17:12:31 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //-----------------------------------------------------
 
-t_list	*new_list(void)
+t_list	*new_empty_list(void)
 {
 	return (NULL);
 }
@@ -73,6 +73,11 @@ t_list	*create_element(int data)
 	if (!element)
 		return (NULL);
 	element->data = data;
+	element->index = 0;
+	element->chunk = 0;
+	element->pos = -1; //?
+	element->cost_a = -1;//?
+	element->cost_b = -1;//?
 	element->next = NULL;
 	return (element);
 }
@@ -402,32 +407,27 @@ void	sort_3(t_list **lista)
 
 int	search_middle(t_list **lst)
 {
-	int mini;
-	int maxi;
+	int add;
+	int i;
 	int med;
 	t_list *tmp;
 
+	i = 1;
+	med = 0;
 	tmp = (*lst);
-	mini = (*lst)->data;
+	add = 0;
 	while((*lst)->next)
-	{
-		if ((*lst)->next->data < mini)
-		       mini = (*lst)->next->data;
+	{	
+		printf("data = %d\n", (*lst)->data);
+		add = add + (*lst)->data;
+		i++;
 		(*lst) = (*lst)->next;
  	}
 	*lst = tmp;
-	maxi = (*lst)->data;
-
-	while((*lst)->next)
-	{
-		if ((*lst)->next->data > maxi)
-			maxi = (*lst)->next->data;
-		(*lst)= (*lst)->next;
-	}
-	med = (maxi + mini) / 2;
-	printf("med = %d\n\n", med);//
-	*lst = tmp;
-
+	printf("add = %d\n", add);
+	printf("i   = %d\n", i);
+	med = add / i;
+	printf("med = %d\n", med);
 	return(med);
 }
 //----------------------------------------------------------------------
@@ -439,12 +439,12 @@ int	search_high(t_list **lst, int block)
 	max = (*lst)->data;
 	
 	printf("init search_hign data = %d\n", (*lst)->data);
-	printf("init search_high block= %d\n", (*lst)->block);
+	printf("init search_high block= %d\n", (*lst)->chunk);
 	
-	while((*lst)->block == block)
+	while((*lst)->chunk == block)
 	{
 		printf("data %d\n",(*lst)->data);
-		printf("block %d\n", (*lst)->block);
+		printf("block %d\n", (*lst)->chunk);
 		printf("chunk = %d\n", block);
 		
 		if((*lst)->data >= max)
@@ -470,27 +470,25 @@ int	search_high(t_list **lst, int block)
 void	sort_all(t_list **lista, t_list **listb)
 {
 	int medium;
-	int i;
+	int i = 0;
 	int stack_size_a;
-	int stack_size_b;
-	int chunk;
-//	int high;
-	chunk = 0;
+	int chunk_is;
+
+	chunk_is = 1;
 	stack_size_a = list_size(*lista);
 	while(stack_size_a > 2)
 	{
-		printf("paramsum = %d\n", stack_size_a);	
-		i = 0;
+		printf("stack_size_a = %d\n", stack_size_a);//printf
 		printf("search_middle\n"); //printf
 		medium = search_middle(lista);
-		while(i < stack_size_a)
-		{
+		while(i != stack_size_a)
+		{	
 		if ((*lista)->data < medium)
 			{
-				(*lista)->block = chunk;
+				(*lista)->chunk = chunk_is;
 				printf("top elem. data = %d\n", (*lista)->data);//
 				printf("top elem. index = %d\n", (*lista)->index);//
-				printf("top elem. block = %d\n", (*lista)->block);//
+				printf("top elem. chunk = %d\n", (*lista)->chunk);//
 				pb(lista, listb);
 			}
 		else
@@ -498,12 +496,31 @@ void	sort_all(t_list **lista, t_list **listb)
 		i++;
 		}
 	printf("\n");//
-	chunk++;
+	chunk_is++;
 	printf("chunking done\n"); //
+	i = 0;
 	stack_size_a = list_size(*lista);
-	}	
-	chunk--;
-	printf("max chunk = %d\n", chunk); 
+	print_list(*lista); //
+	printf("A\n"); //
+	print_list(*listb); //
+	printf("B\n\n"); //
+
+	}
+	while(stack_size_a != 0)
+	{
+		pb(lista, listb);
+		stack_size_a = list_size(*lista);
+	}
+	
+	print_list(*lista); //
+	printf("A\n"); //
+	print_list(*listb); //
+	printf("B\n\n"); //
+
+	chunk_is--;
+	printf("max chunk = %d\n", chunk_is);
+}	
+/*
 	print_list(*lista); //
 	printf("A\n"); //
 	print_list(*listb); //
@@ -532,7 +549,7 @@ void	sort_all(t_list **lista, t_list **listb)
 	if(is_sorted(*lista) == false)
 		shift_stack(lista);
 }
-		
+*/		
 		
 		
 		
