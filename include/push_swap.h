@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/15 18:18:42 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/16 16:33:42 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,15 @@ int	search_middle(t_list **lst);
 void	sort_all(t_list **lista, t_list **listb);
 void	put_index(t_list *lista, int stack_size);
 int	search_high(t_list **lst, int block);
+
+void	sort_chunked(t_list **lista, t_list **listb);
+int	search_highest_index_position(t_list **lst);
+void	put_position(t_list **lst);
+
 /*
 void	get_target_position(t_list **lista, t_list **listb);
-void	get_position(t_list **lst);
 int	get_target(t_list **lista, int listb_index, int target_index, int target_position);
 void	get_cost(t_list **lista, t_list **listb);
-int	get_lowest_index_position(t_list **lst);
 void	do_cheapest_move(t_list **lista, t_list **listb);
 void	do_move(t_list **lista, t_list **listb, int cost_a, int cost_b);
 void	do_rev_rotate_both(t_list **lista, t_list **listb, int *cost_a, int *cost_b);
