@@ -6,7 +6,7 @@
 #    By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 18:43:17 by ageiser           #+#    #+#              #
-#    Updated: 2023/03/15 18:19:34 by ageiser          ###   ########.fr        #
+#    Updated: 2023/03/16 12:18:35 by ageiser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,8 @@ OBJ_DIR = obj/
 
 SRC_FILES = error_functions.c error_functions_suite.c \
 	    general_function.c list_functions.c \
-	    main.c push.c rev_rot.c rot.c swap.c
+	    main.c push.c rev_rot.c rot.c swap.c \
+	    sort.c
 # C files to compile
 
 #----------------------------------------------------------------------
