@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/15 18:26:26 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/16 17:27:47 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -425,10 +425,11 @@ int	search_middle(t_list **lst)
  	}
 	*lst = tmp;
 	med = add / i;
-	printf("med = %d\n", med);
+//	printf("med = %d\n", med);//
 	return(med);
 }
 //----------------------------------------------------------------------
+/*
 int	search_high(t_list **lst, int block)
 {
 	t_list *tmp;
@@ -460,7 +461,7 @@ int	search_high(t_list **lst, int block)
 	*lst = tmp;
 	return(max);
 }	
-
+*/
 
 
 
@@ -470,47 +471,46 @@ void	sort_all(t_list **lista, t_list **listb)
 	int medium;
 	int i = 0;
 	int stack_size_a;
+	int stack_size_b;
 	int chunk_is;
 
 	chunk_is = 1;
 	stack_size_a = list_size(*lista);
 	while(stack_size_a > 2)
 	{
-		printf("stack_size_a = %d\n", stack_size_a);//printf
-		printf("search_middle\n"); //printf
+//		printf("stack_size_a = %d\n", stack_size_a);//printf
+//		printf("search_middle\n"); //printf
 		medium = search_middle(lista);
 		while(i != stack_size_a)
 		{	
 		if ((*lista)->data < medium)
 			{
 				(*lista)->chunk = chunk_is;
-				printf("top elem. data = %d\n", (*lista)->data);//
-				printf("top elem. index = %d\n", (*lista)->index);//
-				printf("top elem. chunk = %d\n", (*lista)->chunk);//
+//				printf("top elem. data = %d\n", (*lista)->data);//
+//				printf("top elem. index = %d\n", (*lista)->index);//
+//				printf("top elem. chunk = %d\n", (*lista)->chunk);//
 				pb(lista, listb);
 			}
 		else
 			run_rot_a(lista);
 		i++;
 		}
-	printf("\n");//
+//	printf("\n");//
 
-	printf("chunking %d done\n", chunk_is); //
+//	printf("chunking %d done\n", chunk_is); //
 	chunk_is++;
 	i = 0;
 	stack_size_a = list_size(*lista);
-	print_list(*lista); //
-	printf("A\n"); //
-	print_list(*listb); //
-	printf("B\n\n"); //
+//	print_list(*lista); //
+//	printf("A\n"); //
+//	print_list(*listb); //
+//	printf("B\n\n"); //
 
 	}
-	while(stack_size_a != 0)
-	{
-		(*lista)->chunk = chunk_is;
-		pb(lista, listb);
-		stack_size_a = list_size(*lista);
-	}
+	if (stack_size_a > 1 &&(*lista)->data > (*lista)->next->data)
+				run_swap_a(lista);
+	
+	printf("\nchunked and pushed\n\n");//
 	print_list(*lista); //
 	printf("A\n"); //
 	print_list(*listb); //
@@ -518,16 +518,23 @@ void	sort_all(t_list **lista, t_list **listb)
 /*	
 	while(*listb)
 	{
-		printf("chunk = %d\n", (*listb)->chunk);
+		printf("chunk = %d\n", (*listb)->index);
 		(*listb) = (*listb)->next;
 	}
 */	
-
-/*	while(chunk_is != 0);		 
+	stack_size_b = list_size(*listb);
+	while(stack_size_b > 0)	 
 	{
-		sort_chunked(listb, chunk); 
-		chunk--;
+		sort_chunked(lista, listb); 
+		stack_size_b--;
+	}
+/*	while(*lista)
+	{
+		printf("index = %d\n", (*lista)->index);
+		(*lista) = (*lista)->next;
 	}*/
+
+
 }	
 
 

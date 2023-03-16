@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:34:25 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/14 13:48:16 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/16 14:45:04 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,6 @@ void	get_cost(t_list **lista, t_list **listb)
   }
 }	
 
-void	get_position(t_list **lst)
-{
-	t_list *tmp;
-	int 	i;
-
-	tmp = *lst;
-	i = 0;
-	while(tmp)
-	{
-		tmp->pos = i;
-		tmp = tmp->next;
-		i++;
-	}
-}
 
 int	get_target(t_list **lista, int listb_index, int target_index, int target_position)
 {

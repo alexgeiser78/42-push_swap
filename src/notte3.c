@@ -6,33 +6,11 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:31:42 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/14 14:59:39 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/16 15:01:37 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-
-int	get_lowest_index_position(t_list **lst)
-{
-	t_list *tmp;
-	int	lowest_index;
-	int	lowest_pos;
-
-	tmp = *lst;
-	lowest_index = INT_MAX;
-	get_position(lst);
-	lowest_pos = tmp->pos;
-	while (tmp)
-	{
-		if (tmp->index < lowest_index)
-		{
-			lowest_index = tmp->index;
-			lowest_pos = tmp->pos;
-		}
-		tmp = tmp->next;
-	}
-	return(lowest_pos);
-}
 
 void	shift_stack(t_list **lista)
 {

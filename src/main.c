@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/15 18:24:32 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/16 17:33:02 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 
 //---------list_size
 	stack_size = list_size(lista);
-	printf("stack_size = %d\n", stack_size); //printf
+//	printf("stack_size = %d\n", stack_size); //printf
 
 //--------list_index	
 	put_index(lista, stack_size); //(+1)
