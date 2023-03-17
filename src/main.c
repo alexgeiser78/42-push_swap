@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/16 17:33:02 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/17 18:12:21 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,40 @@
 
 int	main(int argc, char **argv)
 {
-	int	stack_size;
-	t_list *lista;
-	t_list *listb;
-	
-	if(argc < 2)
-		return(0);
-	if(input_check(argv) == false || overflow_checker(argv) == false)
-		exit_error(NULL, NULL); // (NULL, NULL) permet d'etre sure que les malloc seront free
+	t_list	*lista;
+	t_list	*listb;
+	int		stack_size;
 
-//----------create lists	
+	if (argc < 2)
+		return (0);
+	if (input_check(argv) == false || overflow_checker(argv) == false)
+		exit_error(NULL, NULL);
 	listb = new_empty_list();
 	lista = list_maker(argc, argv);
-
-//----------input
 	printf("\n");//printf
 	printf("input\n");//printf
-
 	print_list(lista);//printf
 	printf("A\n");//printf
-	printf("------------------\n");	//printf
+	printf("------------------\n");//printf
 	print_list(listb);//printf
 	printf("B\n"); //printf
 	printf("\n");//printf
-
-//---------list_size
 	stack_size = list_size(lista);
-//	printf("stack_size = %d\n", stack_size); //printf
-
-//--------list_index	
-	put_index(lista, stack_size); //(+1)
-
-//--------sort
+	put_index(lista, stack_size);
 	how_to_sort(&lista, &listb, stack_size);
-
-//output
 	printf("output\n");//printf
 	print_list(lista);//printf
 	printf("A\n");//printf
 	printf("------------------\n"); //printf
 	print_list(listb);//printf
 	printf("B\n");//printf
-	printf("\n");//printf
-	
+	printf("\n");//printf	
+//	print_index(lista);//
 //	free(lista);
 //	free(listb);
 }
+
+//ligne 24 (NULL, NULL) to force the malloc to free
 
 //---------------------------------------------------
 

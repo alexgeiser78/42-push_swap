@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:20:34 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/15 15:38:49 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/17 13:03:20 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_rot(t_list **lst)
 
 	swap = (*lst)->data;
 	last = list_size(*lst);
-	add_at(*lst, swap, last);
+	add_at(*lst, swap, last, (*lst)->index);
 	free_at(lst, 0);
 }
 // ligne 102 on stocke dans swap la data du premier element

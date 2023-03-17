@@ -6,45 +6,11 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/16 17:27:47 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/17 18:25:02 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-
-//-----------------------------------------------------
-
-t_list	*new_empty_list(void)
-{
-	return (NULL);
-}
-
-//-----------------------------------------------------
-
-Bool	is_empty_list(t_list **lst)
-{
-	if (lst == NULL)
-		return (true);
-	return (false);
-}
-
-//------------------------------------------------------
-
-int	list_size(t_list *lst)
-
-{
-	int	size;
-
-	size = 0;
-	if (is_empty_list(&lst) == true)
-		return (size);
-	while (lst != NULL)
-	{
-		size++;
-		lst = lst->next;
-	}
-	return (size);
-}
 
 //-------------------------------------------------------
 
@@ -63,54 +29,19 @@ void	print_list(t_list *lst)
 	printf ("[NULL]\n");//printf
 }
 
-//-------------------------------------------------------
+//------------------------------------------------------
 
-t_list	*create_element(int data)
+void	print_index(t_list *lst)
 {
-	t_list	*element;
+	t_list *tmp;
+	tmp = lst;
 
-	element = malloc(sizeof(t_list));
-	if (!element)
-		return (NULL);
-	element->data = data;
-	element->index = 0;
-	element->chunk = 0;
-	element->pos = -1; //?
-	element->cost_a = -1;//?
-	element->cost_b = -1;//?
-	element->next = NULL;
-	return (element);
-}
-
-//-------------------------------------------------------
-
-t_list	*add_at(t_list *lst, int data, int pos)
-{
-	int	i;
-	t_list	*last;
-	t_list	*cur;
-	t_list	*element;
-
-	i = 0;
-	last = lst;
-	cur = lst;
-	element = create_element(data);
-	if (is_empty_list(&lst))
-		return (element);
-	if (pos == 0)
+	while (tmp)
 	{
-		element->next = lst;
-		return (element);
+		printf("index = %d\n", tmp->index);//printf
+		tmp = tmp->next;
 	}
-	while (i < pos)
-	{
-	i++;
-	last = cur;
-	cur = cur->next;
-	}
-	last->next = element;
-	element->next = cur;
-	return (lst);
+	printf("[NULL]\n");//printf
 }
 
 //-------------------------------------------------------
@@ -152,113 +83,6 @@ void	set_at(t_list *lst, int data, int pos)
 	}
 	lst->data = data;
 }
-
-//---------------------------------------------
-
-/*
-t_list push_back_list(t_list lst, int data)
-{
-	t_list *element;
-
-	element = malloc(sizeof(*element));
-
-	if(element == NULL)
-	{
-		printf("malloc error");
-		exit(EXIT_FAILURE);
-	}	
-
-	element->data = data;
-	element->next = NULL;
-
-	if(is_empty_list(lst))
-		return element;
-
-	t_list *temp;
-	temp = lst;
-	
-	while(temp->next != NULL)
-		temp = temp->next;
-
-	temp->next = element;
-
-	return (lst);
-
-}
-*/
-//---------------------------------------------------------------
-/*
-
-t_list *push_front_list(t_list *lst, int data)
-{
-	t_list *element;
-
-	element = create_element(data);
-
-	element->data = data;
-
-	if(is_empty_list(&lst))
-		element->next = NULL;
-	else
-		element->next= lst;
-	return (lst);
-}	
-*/
-//-----------------------------------------------------------------
-/*
-t_list pop_back_list(t_list lst)
-
-{
-	if(is_empty_list(lst))
-		return new_list();
-
-	if(lst->next == NULL)
-	{
-		free(lst);
-		lst = NULL;
-		return new_list();
-	}
-	t_list *temp = lst;
-	t_list *before = lst;
-
-	while(temp->next != NULL)
-	{
-		before = temp;
-		temp = temp->next;
-	}
-
-	before->next = NULL;
-	free(temp);
-	temp = NULL;
-
-	return lst;
-}
-
-//---------------------------------------------------------
-
-t_list	pop_front_list(t_list lst)
-{
-	if (is_empty_list(lst))
-		return(lst);
-	
-	t_list *element;
-
-	element = malloc(sizeof(*element));
-
-	if (element == NULL)
-	{
-		printf("malloc error\n");
-		exit(EXIT_FAILURE);
-	}
-
-	element = lst->element;
-
-	free(lst);
-	lst = NULL;
-		
-	return (element);
-}
-*/
 
 //-----------------------------------------
 
@@ -306,24 +130,8 @@ t_list	*free_list(t_list *lst)
 	}
 	return (lst);
 }
-/*
-//-----------------------------------------------
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (lst)
-	{
-		if (*lst)
-			new->next = *lst;
-		*lst = new;
-	}
-}
-*/
 //----------------------------------------------
-/*
-t_list	add_element(t_list *lst, int num)
-{
-*/
 
 t_list	*get_last(t_list *lst)
 {
@@ -343,18 +151,6 @@ t_list	*get_penultieme(t_list *lst)
 //find before-last element
 //--------------------------------------------------
 
-Bool	is_sorted(t_list *lst)
-{
-	while (lst->next)
-	{
-		if(lst->data > lst->next->data)
-			return(false);
-		lst = lst->next;
-	}
-	return(true);
-}
-//verify if the argument is already ordered
-//--------------------------------------------------
 
 int	is_bigger(t_list *lista)
 {
@@ -507,6 +303,8 @@ void	sort_all(t_list **lista, t_list **listb)
 //	printf("B\n\n"); //
 
 	}
+//	printf("numbero %d, indice %d\n", (*listb)->data, (*listb)->index);
+//	printf("numbero %d, indice %d\n", (*listb)->next->data, (*listb)->next->index);
 	if (stack_size_a > 1 &&(*lista)->data > (*lista)->next->data)
 				run_swap_a(lista);
 	
@@ -523,6 +321,9 @@ void	sort_all(t_list **lista, t_list **listb)
 	}
 */	
 	stack_size_b = list_size(*listb);
+//	printf("numbero %d, indice %d\n", (*listb)->data, (*listb)->index);
+//	printf("numbero %d, indice %d\n", (*listb)->next->data, (*listb)->next->index);
+//	print_index(*listb);//
 	while(stack_size_b > 0)	 
 	{
 		sort_chunked(lista, listb); 
@@ -533,19 +334,8 @@ void	sort_all(t_list **lista, t_list **listb)
 		printf("index = %d\n", (*lista)->index);
 		(*lista) = (*lista)->next;
 	}*/
-
-
 }	
-
-
-
-
-
-
-
-
 /*
-
 	stack_size_b = list_size(*listb);
 	printf("paramsum b = %d\n", stack_size_b); //
 
@@ -576,30 +366,20 @@ void	how_to_sort(t_list **lista, t_list **listb, int paramsum)
 //function to sort 2, 3 and more numbers
 //--------------------------------------------------
 
-void	put_index(t_list *lista, int paramsum)
+void	exit_error(t_list **lista, t_list **listb)
 {
-	t_list *ptr;
-	t_list *highest;
-	int data;
-	while (--paramsum > 0)
-	{
-		ptr = lista;
-		data = INT_MIN;
-	       highest = NULL;
-       	while (ptr)
-	{
-	if(ptr->data == INT_MIN && ptr->index == 0)
-		ptr->index = 1;
-	if(ptr->data > data && ptr->index == 0)
-	{
-		data = ptr->data;
-		highest = ptr;
-		ptr = lista;
-	}
-	else
-		ptr = ptr->next;
-	}
-	if (highest != NULL)
-	highest->index = paramsum;
-	}
-}	
+	if (lista == NULL || *listb != NULL)
+		free_list(*lista);
+	if (listb == NULL || *listb != NULL)
+		free_list(*listb);
+	write(2, "Error\n", 6);
+	exit (1);
+}
+//fonction de free des malloc et sortie = pour cause d'erreur
+//ligne 105 si l'element de la liste a est null et la liste a n'est pas vide, 
+//on free la liste a
+//ligne 107 pareil pour la liste b
+//ligne 109 2 parce que c'est la sortie d'erreur
+//ligne 110 exit est un fonction qui fait une routine de nettoyage des 
+//E/S utilises lors de l'execution du programme
+

@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:51:24 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/16 17:30:15 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/17 13:10:39 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	sort_chunked(t_list **lista, t_list **listb)
 	while(h_i_p != 0)
 	{
 //		h_i_p = INT_MAX;
-		printf("index = %d\n", (*listb)->index);//
+//		printf("index = %d\n", (*listb)->index);//
 		run_rev_rot_b(listb);
 		h_i_p = search_highest_index_position(listb);	
 	}
