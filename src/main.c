@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/17 18:12:21 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/18 13:43:04 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ int	main(int argc, char **argv)
 	printf("B\n");//printf
 	printf("\n");//printf	
 //	print_index(lista);//
-//	free(lista);
-//	free(listb);
+	free_list(&lista);
+	free_list(&listb);
+	return (0);
 }
 
 //ligne 24 (NULL, NULL) to force the malloc to free

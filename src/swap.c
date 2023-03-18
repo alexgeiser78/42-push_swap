@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:59:26 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/15 15:21:06 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/18 15:31:35 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void	ft_swap(t_list *lst)
 	lst->data = lst->next->data;
 	lst->next->data = swap;
 }
-/* on stocke dans swap le data du premier element, le data du permier element 
-prend le data du deuxieme element, le deuxieme element prend le data de swap 
-soit premier element */
 
 //--------------------------------------------------------
 
