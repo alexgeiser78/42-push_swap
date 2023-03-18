@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/17 18:04:45 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/18 19:14:30 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ Bool	overflow_checker(char **str);
 Bool	is_empty_list(t_list **lst);
 Bool	is_sorted(t_list *lst);
 
-//exit if bool is false / list_functions
+//exit and free functions / exit_free
 void	exit_error(t_list **lista, t_list **listb);
+void	free_list(t_list **lst);
+t_list	*free_at(t_list **lst, int pos);
 
 //creating list / init
 t_list	*new_empty_list(void);
@@ -58,54 +60,53 @@ t_list	*add_at(t_list *lst, int data, int pos, int index);
 //miscelaneous tools / tools
 int	list_size(t_list *lst);
 void	put_index(t_list *lst, int stack_size);
+void	put_position(t_list **lst);
 
-void	print_list(t_list *lst);
-void	print_index(t_list *lst);
-t_list	*free_list(t_list *lst);
-int	get_at(t_list *lst, int pos); //afficher une donnee d'un element
-void	set_at(t_list *lst, int data, int pos);
-t_list	*free_at(t_list **lst, int pos);
 
-//miscelaneous libft
+//miscelaneous libft / general
 int	ft_atoi(char *str);
 char	*ft_itoa(int n);
 size_t	ft_strlen(const char *str);
 int	nbrlen(long int n);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
-// push-swap-rot-rev_rot functions
+// swap functions
 void	ft_swap(t_list *lst);
-
-void	pa(t_list **lista, t_list **listb);
-void	pb(t_list **lista, t_list **listb);
-
-void	ft_rot(t_list **lst);
-
-void	ft_rev_rot(t_list **lst);
-
-t_list	*get_last(t_list *lst);
-t_list	*get_penultieme(t_list *lst);
-
 void	run_swap_a(t_list **lista);
 void	run_swap_b(t_list **listb);
 void	run_swap_ab(t_list *lista, t_list *listb);
+
+// push functions
+void	pa(t_list **lista, t_list **listb);
+void	pb(t_list **lista, t_list **listb);
+
+// rot functions
+void	ft_rot(t_list **lst);
 void	run_rot_a(t_list **lista);
 void	run_rot_b(t_list **listb);
 void	run_rot_ab(t_list **lista, t_list **listb);
+
+// rev_rot functions
+void	ft_rev_rot(t_list **lst);
 void	run_rev_rot_a(t_list **lista);
 void	run_rev_rot_b(t_list **listb);
 void	run_rev_rot_ab(t_list **lista, t_list **listb);
 
+// rev_rot_suite functions
+t_list	*get_last(t_list *lst);
+t_list	*get_penultieme(t_list *lst);
+
+// sort function
 void	how_to_sort(t_list **lista, t_list **listb, int stack_size);
 void	sort_3(t_list **lista);
 int	is_bigger(t_list *lista);
 int	search_middle(t_list **lst);
 void	sort_all(t_list **lista, t_list **listb);
-int	search_high(t_list **lst, int block);
 
+//sort_suite functions
+int	search_high(t_list **lst, int block);
 void	sort_chunked(t_list **lista, t_list **listb);
 int	search_highest_index_position(t_list **lst);
-void	put_position(t_list **lst);
 
 /*
 void	get_target_position(t_list **lista, t_list **listb);
@@ -120,7 +121,12 @@ void	do_rotate_b(t_list **listb, int *cost);
 int	nb_abs(int nb);
 void	shift_stack(t_list **lista);*/
 
-//containing printf
+//containing printf / forbidden
+void	print_list(t_list *lst);
+void	print_index(t_list *lst);
+int	get_at(t_list *lst, int pos);
+void	set_at(t_list *lst, int data, int pos);
+
 
 //unused 
 
