@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/18 19:14:30 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/19 17:25:10 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	list_size(t_list *lst);
 void	put_index(t_list *lst, int stack_size);
 void	put_position(t_list **lst);
 
-
 //miscelaneous libft / general
 int	ft_atoi(char *str);
 char	*ft_itoa(int n);
@@ -104,10 +103,14 @@ int	search_middle(t_list **lst);
 void	sort_all(t_list **lista, t_list **listb);
 
 //sort_suite functions
-int	search_high(t_list **lst, int block);
+void	chunker(t_list **lista, t_list **listb, int i, int chunk_is);
+void	sort_list_a(t_list **lista, int stack_size_a);
+void	sort_list_b(t_list **lista, t_list **listb);
 void	sort_chunked(t_list **lista, t_list **listb);
 int	search_highest_index_position(t_list **lst);
 
+//sort_suite2 functions
+int	search_high(t_list **lst, int block);
 /*
 void	get_target_position(t_list **lista, t_list **listb);
 int	get_target(t_list **lista, int listb_index, int target_index, int target_position);
