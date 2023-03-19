@@ -6,7 +6,7 @@
 #    By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 18:43:17 by ageiser           #+#    #+#              #
-#    Updated: 2023/03/18 18:19:23 by ageiser          ###   ########.fr        #
+#    Updated: 2023/03/19 16:15:54 by ageiser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,7 @@ SRC_FILES = error_functions.c error_functions_suite.c \
 	    main.c push.c rev_rot.c rot.c swap.c \
 	    sort.c unused.c init.c tools.c \
 	    forbidden.c exit_free.c rev_rot_suite.c \
-	    sort_suite.c
+	    sort_suite.c sort_suite2.c
 # C files to compile
 
 #----------------------------------------------------------------------
