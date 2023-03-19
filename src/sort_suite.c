@@ -6,18 +6,92 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:51:24 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/18 19:14:40 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/19 17:46:52 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
- 
+
+//----------------------------------------------------------
+
+void	chunker(t_list **lista, t_list **listb, int i, int chunk_is)
+{
+	int	medium;
+	int	stack_size_a;
+
+	stack_size_a = list_size(*lista);
+	medium = search_middle(lista);
+	while (i != stack_size_a)
+	{	
+		stack_size_a = list_size(*lista);
+		if ((*lista)->data < medium)
+		{
+			(*lista)->chunk = chunk_is;
+			pb(lista, listb);
+		}
+		else
+			run_rot_a(lista);
+	i++;
+	}
+}
+//function to put in listb what is smaller than the mid number of the lista
+//every time we passed all lista, the number of the chunk increase,
+//creating increasing blocks of unsorted numbers 
+//[4]                 
+//[3]       
+//[2]   ->  [2]     ->    [2] chunk2
+//[1]       [1][3]     [1][3] chunk1
+//[0][]     [0][4]     [0][4] chunk1
+//
+//-----------------------------------------------------------
+
+void	sort_list_a(t_list **lista, int stack_size_a)
+{
+	if (stack_size_a > 1 && (*lista)->data > (*lista)->next->data)
+		run_swap_a(lista);
+}
+// function that swaps the 2 last numbers if there is 2 and
+// if the highest is on top
+//-----------------------------------------------------------------
+
+void	sort_list_b(t_list **lista, t_list **listb)
+{
+	int	stack_size_b;
+
+	stack_size_b = list_size(*listb);
+	while (stack_size_b > 0)
+	{
+		sort_chunked(lista, listb);
+		stack_size_b--;
+	}
+}
+//main function to sort a big stack
+//line 62 the function works till listb is empty
+//line 64 we send everything to the sort_chunked function
+//line 65 every time a number is pushed to lista we
+//decrease the size of listb  
+//----------------------------------------------------------------------
+
+void	sort_chunked(t_list **lista, t_list **listb)
+{
+	int	h_i_p;
+
+	h_i_p = search_highest_index_position(listb);
+	while (h_i_p != 0)
+	{
+		run_rev_rot_b(listb);
+		h_i_p = search_highest_index_position(listb);
+	}
+	pa(lista, listb);
+}
+
+//--------------------------------------------------------------
 
 int	search_highest_index_position(t_list **lst)
 {
-	t_list *tmp;
-	int	highest_index;
-	int	position;
+	t_list	*tmp;
+	int		highest_index;
+	int		position;
 
 	tmp = (*lst);
 	highest_index = INT_MIN;
@@ -33,62 +107,8 @@ int	search_highest_index_position(t_list **lst)
 		tmp = tmp->next;
 	}
 //	printf("highest_index_position = %d\n", position);//
-	return(position);
+	return (position);
 }
 //ligne 40 INT_MIN pour etre sur que le chiffre soit plus petit que
 //l'index du premier element
-
-
-void	sort_chunked(t_list **lista, t_list **listb)
-{
-	int	h_i_p;
-//	h_i_p = INT_MAX;
-//	int stack_size_b;
-//	stack_size_b = list_size(*listb); 
-//	put_index(*listb, stack_size_b);
-	h_i_p = search_highest_index_position(listb);	
-	while(h_i_p != 0)
-	{
-//		h_i_p = INT_MAX;
-//		printf("index = %d\n", (*listb)->index);//
-		run_rev_rot_b(listb);
-		h_i_p = search_highest_index_position(listb);	
-	}
-	pa(lista, listb);
-}
-
-//----------------------------------------------------------------------
-/*
-int	search_high(t_list **lst, int block)
-{
-	t_list *tmp;
-	int max;
-	tmp = (*lst);
-	max = (*lst)->data;
-	
-	printf("init search_hign data = %d\n", (*lst)->data);
-	printf("init search_high block= %d\n", (*lst)->chunk);
-	
-	while((*lst)->chunk == block)
-	{
-		printf("data %d\n",(*lst)->data);
-		printf("block %d\n", (*lst)->chunk);
-		printf("chunk = %d\n", block);
-		
-		if((*lst)->data >= max)
-		{
-			max = (*lst)->data;
-			printf("bigger\n");
-		}
-		if((*lst)->next != NULL)
-			(*lst) = (*lst)->next;
-	 //      	printf("no bigger\n");	
-		else
-			break;//
-	}
-	printf("max = %d\n", max);
-	*lst = tmp;
-	return(max);
-}	
-*/
-
+//--------------------------------------------------------

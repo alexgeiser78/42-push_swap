@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/18 18:41:19 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/19 17:25:20 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 //--------------------------------------------------
 
-
 int	is_bigger(t_list *lista)
 {
-	int big;
+	int	big;
 
-	big  = lista->data;
+	big = lista->data;
 	while (lista)
 	{
 		if (lista->data > big)
 			big = lista->data;
 		lista = lista->next;
 	}
-	return(big);
+	return (big);
 }
 //search for the biggest number to reduce the number of steps
 //using a simple swap rule
@@ -45,141 +44,86 @@ void	sort_3(t_list **lista)
 		run_swap_a(lista);
 }
 
-//function to sort 3 numbers using the less steps possiblei
-//line 39 we earch for the biggest number
+//function to sort 3 numbers using the less steps possible
+//line 39 we search for the biggest number
 //line 40 if the biggest number is on top we put it on the base
 //line 42 if the second number is the biggest we put the base on top
 //line 44 if the first number is higher than the second we swap 
 //the two first
+//
+//[3]      [2]     [1]     [2]     [1]     [1]     [2]    [1]
+//[2]  ra  [1] sa  [2]     [3] rra [2]     [3] rra [1] sa [2]
+//[1]  ->  [3] ->  [3]     [1]	-> [3]	   [2]	-> [3] -> [3]
+//
+//[2]    [1]   [3]    [1]  
+//[1] sa [2]   [1] ra [2]
+//[3] -> [3]   [2] -> [3] 
 //--------------------------------------------------
 
 int	search_middle(t_list **lst)
 {
-	int add;
-	int i;
-	int med;
-	t_list *tmp;
+	int		add;
+	int		i;
+	int		med;
+	t_list	*tmp;
 
 	i = 1;
 	med = 0;
 	tmp = (*lst);
 	add = (*lst)->data;
-	while((*lst)->next)
+	while ((*lst)->next)
 	{	
 		(*lst) = (*lst)->next;
-
 		add = add + (*lst)->data;
 		i++;
- 	}
-	*lst = tmp;
+	}
+		*lst = tmp;
 	med = add / i;
-//	printf("med = %d\n", med);//
-	return(med);
+	return (med);
 }
 
+//function to find the mid number in the list,
+//we add all number that we divide by the number of arguments 
 //--------------------------------------------------------------------
+
 void	sort_all(t_list **lista, t_list **listb)
 {
-	int medium;
-	int i = 0;
-	int stack_size_a;
-	int stack_size_b;
-	int chunk_is;
+	int	i;
+	int	stack_size_a;
+	int	chunk_is;
 
+	i = 0;
 	chunk_is = 1;
 	stack_size_a = list_size(*lista);
-	while(stack_size_a > 2)
+	while (stack_size_a > 2)
 	{
-//		printf("stack_size_a = %d\n", stack_size_a);//printf
-//		printf("search_middle\n"); //printf
-		medium = search_middle(lista);
-		while(i != stack_size_a)
-		{	
-		if ((*lista)->data < medium)
-			{
-				(*lista)->chunk = chunk_is;
-//				printf("top elem. data = %d\n", (*lista)->data);//
-//				printf("top elem. index = %d\n", (*lista)->index);//
-//				printf("top elem. chunk = %d\n", (*lista)->chunk);//
-				pb(lista, listb);
-			}
-		else
-			run_rot_a(lista);
-		i++;
-		}
-//	printf("\n");//
-
-//	printf("chunking %d done\n", chunk_is); //
-	chunk_is++;
-	i = 0;
-	stack_size_a = list_size(*lista);
-//	print_list(*lista); //
-//	printf("A\n"); //
-//	print_list(*listb); //
-//	printf("B\n\n"); //
-
+		chunker(lista, listb, i, chunk_is);
+		chunk_is++;
+		i = 0;
+		stack_size_a = list_size(*lista);
 	}
-//	printf("numbero %d, indice %d\n", (*listb)->data, (*listb)->index);
-//	printf("numbero %d, indice %d\n", (*listb)->next->data, (*listb)->next->index);
-	if (stack_size_a > 1 &&(*lista)->data > (*lista)->next->data)
-				run_swap_a(lista);
-	
-	printf("\nchunked and pushed\n\n");//
-	print_list(*lista); //
-	printf("A\n"); //
-	print_list(*listb); //
-	printf("B\n\n"); //
-/*	
-	while(*listb)
-	{
-		printf("chunk = %d\n", (*listb)->index);
-		(*listb) = (*listb)->next;
-	}
-*/	
-	stack_size_b = list_size(*listb);
-//	printf("numbero %d, indice %d\n", (*listb)->data, (*listb)->index);
-//	printf("numbero %d, indice %d\n", (*listb)->next->data, (*listb)->next->index);
-//	print_index(*listb);//
-	while(stack_size_b > 0)	 
-	{
-		sort_chunked(lista, listb); 
-		stack_size_b--;
-	}
-/*	while(*lista)
-	{
-		printf("index = %d\n", (*lista)->index);
-		(*lista) = (*lista)->next;
-	}*/
-}	
-/*
-	stack_size_b = list_size(*listb);
-	printf("paramsum b = %d\n", stack_size_b); //
-
-	t_list *tmp;
-	tmp = (*listb);
-
-	while(*listb)
-	{	
-		get_target_position(lista, listb);
-		get_cost(lista, listb);
-		do_cheapest_move(lista, listb);
-	}
-	if(is_sorted(*lista) == false)
-		shift_stack(lista);
+	sort_list_a(lista, stack_size_a);
+	sort_list_b(lista, listb);
 }
-*/
+//function of redirection to chunker which put in listb using chunk package
+//than sort the lista and  main sort of listb
+//line 96 i decide that the chunks(blocks) gonna start with 1 instead of 0
+//line 98 i want that stays in lista not more than 2 numbers
+//line 100 is a function with a lot of argument and the result of 
+//cutting my function because has more than 25 lines(shit rule)
+//line 103 always mesure the list size every time an element is 
+//pushed to b or not   
 //------------------------------------------------------------------
 
 void	how_to_sort(t_list **lista, t_list **listb, int stack_size)
 {
-	if(stack_size == 2 && is_sorted(*lista) == false)
+	if (stack_size == 2 && is_sorted(*lista) == false)
 		run_swap_a(lista);
-	else if(stack_size == 3 && is_sorted(*lista) == false)
+	else if (stack_size == 3 && is_sorted(*lista) == false)
 		sort_3(lista);
-	else if(stack_size > 3 && is_sorted(*lista) == false)
+	else if (stack_size > 3 && is_sorted(*lista) == false)
 		sort_all(lista, listb);
 }
 //function to sort 2, 3 and more numbers
 //dispatch to other functions regarding the number of arguments
 //--------------------------------------------------
-
