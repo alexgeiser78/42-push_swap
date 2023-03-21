@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:33:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/18 13:15:10 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:07:44 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	print_list(t_list *lst)
 
 void	print_index(t_list *lst)
 {
-	t_list *tmp;
-	tmp = lst;
+	t_list	*tmp;
 
+	tmp = lst;
 	while (tmp)
 	{
 		printf("index = %d\n", tmp->index);

@@ -6,12 +6,11 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:07:14 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/17 16:52:37 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:08:02 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-
 
 int	nbrlen(long int n)
 {

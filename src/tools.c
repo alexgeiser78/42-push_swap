@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:54:16 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/18 16:04:48 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:10:37 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,17 @@ void	put_index(t_list *lst, int stack_size)
 void	put_position(t_list **lst)
 {
 	t_list	*tmp;
-	int	i;
+	int		i;
 
 	tmp = (*lst);
 	i = 0;
-	while(tmp)
+	while (tmp)
 	{
 		tmp->pos = i;
 		tmp = tmp->next;
 		i++;
 	}
 }
-//attribue une position dans la liste, du plus petit au sommet au plus grand a la base
+//attribue une position dans la liste, 
+//du plus petit au sommet au plus grand a la base
 //-----------------------------------------------------------------

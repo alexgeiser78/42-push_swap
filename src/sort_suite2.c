@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 16:14:42 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/19 16:58:45 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:09:43 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,3 @@ int	search_high(t_list **lst, int block)
 	return(max);
 }	
 */
-
-

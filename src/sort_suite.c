@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:51:24 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/19 17:46:52 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:09:02 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	chunker(t_list **lista, t_list **listb, int i, int chunk_is)
 
 	stack_size_a = list_size(*lista);
 	medium = search_middle(lista);
-	while (i != stack_size_a)
+	while (i <= stack_size_a)
 	{	
 		stack_size_a = list_size(*lista);
 		if ((*lista)->data < medium)
@@ -75,11 +75,16 @@ void	sort_list_b(t_list **lista, t_list **listb)
 void	sort_chunked(t_list **lista, t_list **listb)
 {
 	int	h_i_p;
+	int	stack_size_b;
 
 	h_i_p = search_highest_index_position(listb);
 	while (h_i_p != 0)
 	{
-		run_rev_rot_b(listb);
+		stack_size_b = list_size(*listb);
+		if (h_i_p > stack_size_b / 2)
+			run_rev_rot_b(listb);
+		else
+			run_rot_b(listb);
 		h_i_p = search_highest_index_position(listb);
 	}
 	pa(lista, listb);
@@ -106,7 +111,6 @@ int	search_highest_index_position(t_list **lst)
 		}
 		tmp = tmp->next;
 	}
-//	printf("highest_index_position = %d\n", position);//
 	return (position);
 }
 //ligne 40 INT_MIN pour etre sur que le chiffre soit plus petit que
