@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:54:16 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/21 18:10:37 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/23 13:24:25 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	put_position(t_list **lst)
 		tmp->pos = i;
 		tmp = tmp->next;
 		i++;
+
 	}
 }
 //attribue une position dans la liste, 

@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:12:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/21 18:26:46 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/23 15:52:21 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	main(int argc, char **argv)
 	stack_size = list_size(lista);
 	put_index(lista, stack_size);
 	how_to_sort(&lista, &listb, stack_size);
-/*	printf("output\n");//printf
+	printf("output\n");//printf
 	print_list(lista);//printf
 	printf("A\n");//printf
 	printf("------------------\n"); //printf
 	print_list(listb);//printf
 	printf("B\n");//printf
-	printf("\n");//printf*/
+	printf("\n");//printf
 //	print_index(lista);//
 	free_list(&lista);
 	free_list(&listb);

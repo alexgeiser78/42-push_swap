@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/21 17:33:15 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/23 15:45:34 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,18 @@ void	sort_all(t_list **lista, t_list **listb)
 	int	i;
 	int	stack_size_a;
 	int	chunk_is;
-
 	i = 0;
 	chunk_is = 1;
 	stack_size_a = list_size(*lista);
-	while (stack_size_a > 2)
+	while (stack_size_a > 3)//
 	{
 		chunker(lista, listb, i, chunk_is);
 		chunk_is++;
 		i = 0;
 		stack_size_a = list_size(*lista);
 	}
+	if (stack_size_a == 3)
+		sort_3(lista);
 	sort_list_a(lista, stack_size_a);
 	sort_list_b(lista, listb);
 }

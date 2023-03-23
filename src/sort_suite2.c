@@ -6,44 +6,80 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 16:14:42 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/21 18:09:43 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/23 18:49:19 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-//------------------------------------------------
-//
-/*
-int	search_high(t_list **lst, int block)
+//-----------------------------------------------
+int	get_target(t_list **lista, int listb_index, int target_index, int target_position)
 {
 	t_list *tmp;
-	int max;
-	tmp = (*lst);
-	max = (*lst)->data;
-	
-	printf("init search_hign data = %d\n", (*lst)->data);
-	printf("init search_high block= %d\n", (*lst)->chunk);
-	
-	while((*lst)->chunk == block)
+
+	tmp = *lista;
+	while(tmp)
 	{
-		printf("data %d\n",(*lst)->data);
-		printf("block %d\n", (*lst)->chunk);
-		printf("chunk = %d\n", block);
-		
-		if((*lst)->data >= max)
+		if (tmp->index > listb_index && tmp->index < target_index)
 		{
-			max = (*lst)->data;
-			printf("bigger\n");
+			target_index = tmp->index;
+			target_position = tmp->pos;
 		}
-		if((*lst)->next != NULL)
-			(*lst) = (*lst)->next;
-	 //      	printf("no bigger\n");	
-		else
-			break;//
+		tmp = tmp->next;
 	}
-	printf("max = %d\n", max);
-	*lst = tmp;
-	return(max);
-}	
-*/
+	if (target_index != INT_MAX)
+		return(target_position);
+	tmp = *lista;
+	while(tmp)
+	{
+		if (tmp->index < target_index)
+		{
+		target_index = tmp->index;		
+		target_position = tmp->pos;
+		}
+		tmp = tmp->next;
+	}
+	return(target_position);
+}
+
+//------------------------------------------------
+void	put_target_position(t_list **lista, t_list **listb)
+{
+	t_list *tmp;
+	int	target_position;
+
+	tmp = *listb;
+	put_position(lista);
+	put_position(listb);
+	target_position = 0;
+	while(tmp)
+	{
+		target_position = get_target(lista, tmp->index, INT_MAX, target_position);
+		tmp->target_pos = target_position;
+		tmp = tmp->next;
+	}
+}
+//---------------------------------------------------
+
+void	put_cost(t_list **lista, t_list **listb)
+{
+	t_list *tmp_a;
+	t_list *tmp_b;
+	int size_a;
+	int size_b;
+
+	tmp_a = *lista;
+	tmp_b = *listb;
+	size_a = list_size(*lista);
+	size_b = list_size(*listb);
+	while(tmp_b)
+	{
+		tmp_b->cost_b = tmp_b->pos;
+		if (tmp_b->pos > size_b /2)
+			tmp_b->cost_b = (size_b - tmp_b->pos) * -1;
+		tmp_b->cost_a = tmp_b->target_pos;
+		if (tmp_b->target_pos > size_a / 2)
+			tmp_b->cost_a = (size_a - tmp_b->target_pos) * -1;
+				tmp_b = tmp_b->next;
+	}
+}

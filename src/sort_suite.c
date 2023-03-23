@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:51:24 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/21 18:09:02 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/23 18:40:56 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,27 @@ void	chunker(t_list **lista, t_list **listb, int i, int chunk_is)
 
 	stack_size_a = list_size(*lista);
 	medium = search_middle(lista);
-	while (i <= stack_size_a)
+	while  ( i <= stack_size_a)
 	{	
-		stack_size_a = list_size(*lista);
-		if ((*lista)->data < medium)
-		{
-			(*lista)->chunk = chunk_is;
-			pb(lista, listb);
+			stack_size_a = list_size(*lista);
+			if ((*lista)->data < medium)
+				{
+				if ((*lista)->data < medium / 2)
+				{	
+					(*lista)->chunk = chunk_is;
+					pb(lista, listb);
+					run_rot_b(listb);
+				}	
+				else
+
+				{
+					(*lista)->chunk = chunk_is;
+					pb(lista, listb);
+				}
 		}
 		else
 			run_rot_a(lista);
-	i++;
+		i++;
 	}
 }
 //function to put in listb what is smaller than the mid number of the lista
@@ -47,7 +57,7 @@ void	chunker(t_list **lista, t_list **listb, int i, int chunk_is)
 
 void	sort_list_a(t_list **lista, int stack_size_a)
 {
-	if (stack_size_a > 1 && (*lista)->data > (*lista)->next->data)
+	if (stack_size_a == 2 && (*lista)->data > (*lista)->next->data)
 		run_swap_a(lista);
 }
 // function that swaps the 2 last numbers if there is 2 and
@@ -59,11 +69,23 @@ void	sort_list_b(t_list **lista, t_list **listb)
 	int	stack_size_b;
 
 	stack_size_b = list_size(*listb);
-	while (stack_size_b > 0)
+//	while (listb)
 	{
-		sort_chunked(lista, listb);
-		stack_size_b--;
+		put_target_position(lista, listb);//
+		put_cost(lista, listb);
+//		sort_chunked(lista, listb);
+//		stack_size_b--;
+//		pa(lista, listb);
 	}
+		print_index(*lista);//
+		print_index(*listb);//
+		print_pos(*lista);//
+		print_pos(*listb);//
+		print_target_pos(*lista);//
+		print_target_pos(*listb);//
+		print_cost(*listb);//
+//		print_cost(*lista);//
+
 }
 //main function to sort a big stack
 //line 62 the function works till listb is empty

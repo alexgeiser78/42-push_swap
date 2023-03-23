@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:33:12 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/21 18:07:44 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/23 15:29:13 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,3 +83,48 @@ void	set_at(t_list *lst, int data, int pos)
 	}
 	lst->data = data;
 }
+
+//-----------------------------------------------
+
+void	print_target_pos(t_list *lst)
+{
+	t_list *tmp;
+
+	tmp = lst;
+	while(tmp)
+	{
+		printf("target_pos = %d\n", tmp->target_pos);
+		tmp = tmp->next;
+	}
+	printf("NULL\n");
+}
+//-----------------------------------------------
+
+void	print_pos(t_list *lst)
+{
+	t_list *tmp;
+
+	tmp = lst;
+	while(tmp)
+	{
+		printf("pos = %d\n", tmp->pos);
+		tmp = tmp->next;
+	}
+	printf("NULL\n");
+}
+//-----------------------------------------------
+
+void	print_cost(t_list *lst)
+{
+	t_list *tmp;
+
+	tmp = lst;
+	while(tmp)
+	{
+		printf("cost = %d\n", tmp->cost_b);
+		tmp = tmp->next;
+	}
+	printf("NULL\n");
+}
+
+

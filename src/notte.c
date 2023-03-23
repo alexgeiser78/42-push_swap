@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:34:25 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/16 14:45:04 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/23 15:16:35 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	do_cheapest_move(t_list **lista, t_list **listb)
 	}
 	do_move(lista, listb, cost_a, cost_b);
 }
-
+/*
 void	get_cost(t_list **lista, t_list **listb)
 {
 	t_list *tmp_a;
@@ -56,8 +56,8 @@ void	get_cost(t_list **lista, t_list **listb)
 		tmp_b = tmp_b->next;
   }
 }	
-
-
+*/
+/*
 int	get_target(t_list **lista, int listb_index, int target_index, int target_position)
 {
 	t_list *tmp;
@@ -85,8 +85,8 @@ int	get_target(t_list **lista, int listb_index, int target_index, int target_pos
 		tmp = tmp->next;
 	}
 	return(target_position);
-}
-
+}*/
+/*
 void	get_target_position(t_list **lista, t_list **listb)
 {
 	t_list *tmp;
@@ -103,4 +103,4 @@ void	get_target_position(t_list **lista, t_list **listb)
 		tmp = tmp->next;
 	}
 }
-
+*/
