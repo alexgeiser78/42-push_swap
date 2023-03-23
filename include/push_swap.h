@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:58 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/21 18:12:30 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/23 15:46:06 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ typedef struct s_list
 	int	index;
 	int	chunk;
 	int	pos;
-	int	cost;//
-	int	target_pos;//
+	int	cost_a;
+	int	cost_b;
+	int	target_pos;
 	struct s_list	*next;
 }t_list;
 
@@ -110,11 +111,11 @@ void	sort_chunked(t_list **lista, t_list **listb);
 int	search_highest_index_position(t_list **lst);
 
 //sort_suite2 functions
-int	search_high(t_list **lst, int block);
-/*
-void	get_target_position(t_list **lista, t_list **listb);
+void	put_target_position(t_list **lista, t_list **listb);
 int	get_target(t_list **lista, int listb_index, int target_index, int target_position);
-void	get_cost(t_list **lista, t_list **listb);
+void	put_cost(t_list **lista, t_list **listb);
+
+/*
 void	do_cheapest_move(t_list **lista, t_list **listb);
 void	do_move(t_list **lista, t_list **listb, int cost_a, int cost_b);
 void	do_rev_rotate_both(t_list **lista, t_list **listb, int *cost_a, int *cost_b);
@@ -129,9 +130,12 @@ void	print_list(t_list *lst);
 void	print_index(t_list *lst);
 int	get_at(t_list *lst, int pos);
 void	set_at(t_list *lst, int data, int pos);
-
+void	print_target_pos(t_list *lst);
+void	print_pos(t_list *lst);
+void	print_cost(t_list *lst);
 
 //unused 
+int	search_high(t_list **lst, int block);
 
 
 
