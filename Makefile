@@ -6,7 +6,7 @@
 #    By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 18:43:17 by ageiser           #+#    #+#              #
-#    Updated: 2023/03/19 16:15:54 by ageiser          ###   ########.fr        #
+#    Updated: 2023/03/22 12:20:07 by ageiser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,11 +77,12 @@ CC = gcc
 
 #----------------------------------------------------------------------
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 # -Wall   = -Wadress -Wcomment -Wformat -Wbool-compare -Wuninitialized
 #           -Wunknown-pragmas -Wunused-value...		
 # -Wextra = -Wsign-compare -Wtype-limits -pedantic...
 # -Werror = transform warning into error
+# -fsanitize=address = pour voir les leaks
 
 #----------------------------------------------------------------------
 
