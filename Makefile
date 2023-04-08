@@ -6,7 +6,7 @@
 #    By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 18:43:17 by ageiser           #+#    #+#              #
-#    Updated: 2023/03/22 12:20:07 by ageiser          ###   ########.fr        #
+#    Updated: 2023/04/08 17:19:46 by ageiser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,8 @@ SRC_FILES = error_functions.c error_functions_suite.c \
 	    main.c push.c rev_rot.c rot.c swap.c \
 	    sort.c unused.c init.c tools.c \
 	    forbidden.c exit_free.c rev_rot_suite.c \
-	    sort_suite.c sort_suite2.c
+	    sort_suite.c sort_suite2.c sort_suite3.c \
+	    sort_suite4.c
 # C files to compile
 
 #----------------------------------------------------------------------
@@ -121,12 +122,18 @@ OBJ = $(SRC_FILES:.c=.o)
 
 #----------------------------------------------------------------------
 
+DEP = $(addsuffix .d, $(basename $(OBJ)))
+-include $(DEP)
+#add a suffix to the file, in this case .d to the basename of the object
+
+#----------------------------------------------------------------------
+
 TMP_OBJ = $(addprefix $(OBJ_DIR), $(OBJ))
 #add a prefix to the file, in this case: obj/  ,  main.o                
 
 #-----------------------------------------------------------------------
 
-INCLUDE =   -I ./include/	
+INCLUDE =   -I ./include/	-I ./libft/
 #library inclusion							
 # -I add .h file
 
@@ -158,7 +165,7 @@ makelib:
 #-----------------------------------------------------------------------
 
 $(OBJ_DIR)%.o	  : $(SRC_DIR)%.c  	
-			$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+			$(CC) $(CFLAGS) -MT $@ -MMD -c $< -o $@ $(INCLUDE)
 			@echo "$(GREEN)file compiled$(NO_COLOR)"
 #pattern rules
 #to build .o files we use the .c files
