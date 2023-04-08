@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:39:09 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/23 15:23:46 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/24 17:03:25 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_list	*create_element(int data, int index)
 	element->pos = -1;
 	element->cost_a = -1;
 	element->cost_b = -1;
+	element->target_pos = 0;
 	element->next = NULL;
 	return (element);
 }

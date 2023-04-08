@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 13:25:14 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/18 15:55:40 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/04/08 16:50:18 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,3 +80,26 @@ t_list	*free_at(t_list **lst, int pos)
 }
 //function to free only  one element
 //----------------------------------------------
+
+t_Bool	overflow_suite(int i, char **str, int n)
+{
+	char	*check;
+
+	check = ft_itoa(n);
+		i = 1;
+	while (str[i])
+	{
+		if (check != NULL)
+			free(check);
+		n = ft_atoi(str[i]);
+		check = ft_itoa(n);
+		if (ft_strncmp(str[i], check, ft_strlen(str[i])) != 0)
+			return (false);
+		i++;
+	}
+	if (check != NULL)
+		free(check);
+	return (true);
+}
+//line 96 check that during the convertion atoi ->itoa the number isn't
+//modified to be accepted

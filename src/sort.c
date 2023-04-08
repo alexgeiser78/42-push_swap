@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:19:27 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/23 15:45:34 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/24 16:53:38 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,11 @@ void	sort_all(t_list **lista, t_list **listb)
 	int	i;
 	int	stack_size_a;
 	int	chunk_is;
+
 	i = 0;
 	chunk_is = 1;
 	stack_size_a = list_size(*lista);
-	while (stack_size_a > 3)//
+	while (stack_size_a > 3)
 	{
 		chunker(lista, listb, i, chunk_is);
 		chunk_is++;
@@ -109,11 +110,12 @@ void	sort_all(t_list **lista, t_list **listb)
 //function of redirection to chunker which put in listb using chunk package
 //than sort the lista and  main sort of listb
 //line 96 i decide that the chunks(blocks) gonna start with 1 instead of 0
-//line 98 i want that stays in lista not more than 2 numbers
+//line 98 i want that stays in lista not more than 3 numbers
 //line 100 is a function with a lot of argument and the result of 
 //cutting my function because has more than 25 lines(shit rule)
 //line 103 always mesure the list size every time an element is 
 //pushed to b or not   
+//line 105 if there is 3 numbers we do sort3 function to have the lista sorted
 //------------------------------------------------------------------
 
 void	how_to_sort(t_list **lista, t_list **listb, int stack_size)

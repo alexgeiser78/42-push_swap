@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:11:06 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/23 12:38:50 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/24 17:40:08 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,30 @@ int	search_high(t_list **lst, int block)
 */
 
 //----------------------------------------------
+/*
+void	shift_stack(t_list **lista)
+{
+	int lowest_pos;
+	int stack_size;
+	stack_size = list_size(*lista);
+	lowest_pos = search_highest_index_position(lista);
+	if (lowest_pos > stack_size / 2)
+	{
+		while(lowest_pos < stack_size)
+		{
+			run_rev_rot_a(lista);
+			lowest_pos++;
+		}
+	}
+	else
+	{
+		while (lowest_pos > 0)
+		{
+			run_rot_a(lista);
+			lowest_pos--;
+		}
+	}
+}*/
 
 //---------------------------------------------------------
 

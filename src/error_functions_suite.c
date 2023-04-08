@@ -6,43 +6,36 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:32:02 by ageiser           #+#    #+#             */
-/*   Updated: 2023/03/17 16:35:36 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/04/08 16:49:43 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-Bool	overflow_checker(char **str)
+t_Bool	overflow_checker(char **str)
 {
-	int	i;
-	int	n;
+	int		i;
+	int		n;
 
 	n = 0;
 	i = 1;
 	while (str[i])
 	{
-		if (ft_atoi(str[i]) >= INT_MAX || ft_atoi(str[i]) <= INT_MIN)
+		if (ft_atoi(str[i]) > INT_MAX || ft_atoi(str[i]) < INT_MIN)
 			return (false);
 		i++;
 	}
-	i = 1;
-	while (str[i])
-	{
-		n = ft_atoi(str[i]);
-		if (ft_strncmp(str[i], ft_itoa(n), ft_strlen(str[i])) != 0)
-			return (false);
-		i++;
-	}
-	return (true);
+	if (overflow_suite(i, str, n) == false)
+		return (false);
+	else
+		return (true);
 }
 //ligne 24 on verifie que le chiffre ne depasse pas le nbr le 
 //plus grand 2147483648
-//ligne 32 verifie que lors de la convertion atoi -> itoa le nbr n'est 
-//pas modifie pour etre accepte quand meme
 
 //----------------------
 
-Bool	nbr_cmp(char *str1, char *str2)
+t_Bool	nbr_cmp(char *str1, char *str2)
 {
 	int	i;
 	int	j;
@@ -70,14 +63,14 @@ Bool	nbr_cmp(char *str1, char *str2)
 		return (false);
 }
 //similaire a strcmp mais booleen
-//ligne 52 et 54 verification de presence du signe + pour les cas 12 == +12
-//ligne 62 tant qu'on est pas au bout des arguments et que chaque
+//ligne 46 verification de presence du signe + pour les cas 12 == +12
+//ligne 56 tant qu'on est pas au bout des arguments et que chaque
 //caractere est similaire, on se decale d'un caractere
-//ligne 67 si le dernier caractere de chaque argument est similaire -> true
+//ligne 61 si le dernier caractere de chaque argument est similaire -> true
 
 //---------------------------------
 
-Bool	is_duplicate(char **str)
+t_Bool	is_duplicate(char **str)
 {
 	int	i;
 	int	j;
@@ -96,11 +89,11 @@ Bool	is_duplicate(char **str)
 	}
 	return (false);
 }
-//ligne 85 et 88, indices a 1 car on ne veut pas l'argument ./a.out
-//ligne 91 tant qu'on est sur deux arguments differents (j != i) et
+//ligne 79 et 82, indices a 1 car on ne veut pas l'argument ./a.out
+//ligne 83 tant qu'on est sur deux arguments differents (j != i) et
 //que ces deux arguments sont les memes -> true
 
-Bool	is_sorted(t_list *lst)
+t_Bool	is_sorted(t_list *lst)
 {
 	while (lst->next)
 	{
@@ -113,9 +106,11 @@ Bool	is_sorted(t_list *lst)
 //verify if the argument is already ordered
 //--------------------------------------------------
 
-Bool	is_empty_list(t_list **lst)
+t_Bool	is_empty_list(t_list **lst)
 {
 	if (lst == NULL)
 		return (true);
 	return (false);
 }
+
+//------------------------------------------

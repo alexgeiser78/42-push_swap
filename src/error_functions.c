@@ -6,13 +6,13 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:38:23 by ageiser           #+#    #+#             */
-/*   Updated: 2023/02/25 18:12:39 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/03/24 17:32:37 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-Bool	just_one_zero(char *str)
+t_Bool	just_one_zero(char *str)
 {
 	int	i;
 	int	j;
@@ -46,7 +46,7 @@ Bool	just_one_zero(char *str)
 
 //----------------------------------------
 
-Bool	is_sign(char c)
+t_Bool	is_sign(char c)
 {
 	if (c == '+' || c == '-')
 		return (true);
@@ -57,7 +57,7 @@ Bool	is_sign(char c)
 
 //---------------------------
 
-Bool	is_digit(char c)
+t_Bool	is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (true);
@@ -68,7 +68,7 @@ Bool	is_digit(char c)
 
 //---------------------------
 
-Bool	is_number(char *str)
+t_Bool	is_number(char *str)
 {
 	int	i;
 
@@ -90,7 +90,7 @@ Bool	is_number(char *str)
 
 //-----------------------------
 
-Bool	input_check(char **str)
+t_Bool	input_check(char **str)
 {
 	int	i;
 
