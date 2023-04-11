@@ -6,7 +6,7 @@
 #    By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 18:43:17 by ageiser           #+#    #+#              #
-#    Updated: 2023/04/08 17:19:46 by ageiser          ###   ########.fr        #
+#    Updated: 2023/04/11 15:29:59 by ageiser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,8 +122,9 @@ OBJ = $(SRC_FILES:.c=.o)
 
 #----------------------------------------------------------------------
 
-DEP = $(addsuffix .d, $(basename $(OBJ)))
--include $(DEP)
+DEP = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.d))
+
+#what obj is
 #add a suffix to the file, in this case .d to the basename of the object
 
 #----------------------------------------------------------------------
@@ -164,13 +165,17 @@ makelib:
 
 #-----------------------------------------------------------------------
 
-$(OBJ_DIR)%.o	  : $(SRC_DIR)%.c  	
-			$(CC) $(CFLAGS) -MT $@ -MMD -c $< -o $@ $(INCLUDE)
+$(OBJ_DIR)%.o	  : $(SRC_DIR)%.c Makefile
+			$(CC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@ 
 			@echo "$(GREEN)file compiled$(NO_COLOR)"
 #pattern rules
 #to build .o files we use the .c files
 # -c = without linking. Don't link files together
 # in case of bonuses it's important to put $(INCLUDE) beside $(SRC_DIR)%.c
+# -MT = specifies the name of the target ex: main.c -MT = main.o
+# -MMD = generate a dependency file for each obj 
+#  ex: main.c  -MT-> main.o -MMD-> main.d
+#main.d will contain a list of sourcefile used to generate main.o
 
 #-----------------------------------------------------------------------
 
@@ -225,8 +230,10 @@ re : fclean all
 
 #-----------------------------------------------------------------------
 
+-include $(DEP)
 .PHONY : all clean fclean re
 #for non-files targets, so doesn't look if it is up-to-date
 
 #-----------------------------------------------------------------------
+
 
