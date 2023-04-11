@@ -6,7 +6,7 @@
 /*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 13:25:14 by ageiser           #+#    #+#             */
-/*   Updated: 2023/04/08 16:50:18 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/04/11 19:14:01 by ageiser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_Bool	overflow_suite(int i, char **str, int n)
 {
 	char	*check;
 
-	check = ft_itoa(n);
+	check = NULL;
 		i = 1;
 	while (str[i])
 	{
@@ -94,7 +94,10 @@ t_Bool	overflow_suite(int i, char **str, int n)
 		n = ft_atoi(str[i]);
 		check = ft_itoa(n);
 		if (ft_strncmp(str[i], check, ft_strlen(str[i])) != 0)
+		{
+			free(check);
 			return (false);
+		}
 		i++;
 	}
 	if (check != NULL)
